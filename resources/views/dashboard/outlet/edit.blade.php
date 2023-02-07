@@ -18,34 +18,34 @@
             <form action="/dashboard/outlets/{{ $outlet->slug }}" method="post">
                 @csrf
                 @method('put')
-
+                
                 <div class="form-group mb-3">
                     <label for="nama">Nama Outlet <span class="text-danger">*</span></label>
                     <input name="nama" type="text" id="nama" class="form-control @error('nama') is-invalid @enderror" value="{{ old('nama', $outlet->nama) }}" placeholder="Masukan nama outlet..." autofocus>
                     @error('nama')
-                        <div class="invalid-feedback">
-                            {{ $message }}
-                        </div>
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
                     @enderror
                 </div>
-
+                
                 <div class="form-group mb-3">
                     <label for="alamat">Alamat <span class="text-danger">*</span></label>
                     <textarea name="alamat" class="form-control @error('alamat') is-invalid @enderror" rows="3" placeholder="Masukan alamat outlet...">{{ old('alamat', $outlet->alamat) }}</textarea>
                     @error('alamat')
-                        <div class="invalid-feedback">
-                            {{ $message }}
-                        </div>
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
                     @enderror
                 </div>
-
+                
                 <div class="form-group mb-3">
                     <label for="telepon">Nomor Telepon <span class="text-danger">*</span></label>
                     <input name="telepon" type="number" id="telepon" class="form-control @error('telepon') is-invalid @enderror" value="{{ old('telepon', $outlet->telepon) }}" placeholder="Masukan nomor telepon...">
                     @error('telepon')
-                        <div class="invalid-feedback">
-                            {{ $message }}
-                        </div>
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
                     @enderror
                 </div>
                 
@@ -54,12 +54,11 @@
                         Reset
                     </button>
                     <button type="submit" class="btn btn-primary me-1 mb-1">
-                        Tambah
+                        Perbarui
                     </button>
                 </div>
             </form>
         </div>
     </div>
-</div>
-</div>
+</section>
 @endsection

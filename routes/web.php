@@ -18,10 +18,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::resource('/dashboard/outlets', OutletController::class);
-Route::resource('/dashboard/pakets', PaketController::class);
-Route::resource('/dashboard/users', UserController::class);
-Route::resource('/dashboard/outlets', OutletController::class);
+Route::resource('/dashboard/outlets', OutletController::class)->except('show');
+Route::resource('/dashboard/pakets', PaketController::class)->except('show');
+Route::resource('/dashboard/users', UserController::class)->except('show');
 
 Route::controller(LoginRegisterController::class)->group(function(){
     Route::get('/login', 'login');

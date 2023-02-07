@@ -21,29 +21,29 @@
                     <label for="nama">Nama Outlet <span class="text-danger">*</span></label>
                     <input name="nama" type="text" id="nama" class="form-control @error('nama') is-invalid @enderror" value="{{ old('nama') }}" placeholder="Masukan nama outlet..." autofocus>
                     @error('nama')
-                        <div class="invalid-feedback">
-                            {{ $message }}
-                        </div>
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
                     @enderror
                 </div>
-
+                
                 <div class="form-group mb-3">
                     <label for="alamat">Alamat <span class="text-danger">*</span></label>
                     <textarea name="alamat" class="form-control @error('alamat') is-invalid @enderror" rows="3" placeholder="Masukan alamat outlet...">{{ old('alamat') }}</textarea>
                     @error('alamat')
-                        <div class="invalid-feedback">
-                            {{ $message }}
-                        </div>
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
                     @enderror
                 </div>
-
+                
                 <div class="form-group mb-3">
                     <label for="telepon">Nomor Telepon <span class="text-danger">*</span></label>
                     <input name="telepon" type="number" id="telepon" class="form-control @error('telepon') is-invalid @enderror" value="{{ old('telepon') }}" placeholder="Masukan nomor telepon...">
                     @error('telepon')
-                        <div class="invalid-feedback">
-                            {{ $message }}
-                        </div>
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
                     @enderror
                 </div>
                 
@@ -58,6 +58,5 @@
             </form>
         </div>
     </div>
-</div>
-</div>
+</section>
 @endsection

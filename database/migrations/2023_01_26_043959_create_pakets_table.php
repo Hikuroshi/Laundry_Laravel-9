@@ -16,10 +16,10 @@ return new class extends Migration
     {
         Schema::create('pakets', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('nama', 100);
+            $table->string('slug', 100)->unique();
             $table->foreignIdFor(Outlet::class)->index();
             $table->enum('jenis', ['kiloan', 'selimut', 'bed_cover', 'kaos', 'lain']);
-            $table->string('nama_paket', 100);
-            $table->string('slug', 100)->unique();
             $table->integer('harga');
             $table->timestamps();
         });

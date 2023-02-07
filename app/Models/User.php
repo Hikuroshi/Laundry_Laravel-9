@@ -24,6 +24,11 @@ class User extends Authenticatable
         return $this->belongsTo(Outlet::class, 'outlet_id');
     }
 
+    public function getRouteKeyName()
+    {
+        return 'username';
+    }
+
     /**
      * The attributes that are mass assignable.
      *

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Outlet;
 use App\Models\Paket;
 use Illuminate\Http\Request;
 use \Cviebrock\EloquentSluggable\Services\SlugService;
@@ -16,7 +17,8 @@ class PaketController extends Controller
     public function index()
     {
         return view('dashboard.paket.index', [
-            'title' => 'Paket Cucian'
+            'title' => 'Paket Cucian',
+            'pakets' => Paket::all(),
         ]);
     }
 
@@ -27,8 +29,12 @@ class PaketController extends Controller
      */
     public function create()
     {
+        $jenis_paket = ['kiloan', 'selimut', 'bed_cover', 'kaos', 'lain'];
+
         return view('dashboard.paket.create', [
-            'title' => 'Tambah Paket Cucian'
+            'title' => 'Tambah Paket Cucian',
+            'outlets' => Outlet::all(),
+            'jenis_paket' => $jenis_paket
         ]);
     }
 
@@ -41,16 +47,17 @@ class PaketController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'nama_paket' => 'required|max:100',
+            'nama' => 'required|max:100',
             'outlet_id' => 'required',
             'jenis' => 'required',
             'harga' => 'required|max:11',
         ]);
 
-        $validatedData['slug'] = SlugService::createSlug(Paket::class, 'slug', $request->nama_paket);
+        $validatedData['nama'] = ucwords($request->nama);
+        $validatedData['slug'] = SlugService::createSlug(Paket::class, 'slug', $request->nama);
 
         Paket::create($validatedData);
-        return redirect('/dashboard/paket')->with('success', 'Paket berhasil ditambahkan!');
+        return redirect('/dashboard/pakets')->with('success', 'Paket berhasil ditambahkan!');
     }
 
     /**
@@ -91,17 +98,17 @@ class PaketController extends Controller
     public function update(Request $request, Paket $paket)
     {
         $validatedData = $request->validate([
-            'nama_paket' => 'required|max:100',
+            'nama' => 'required|max:100',
             'outlet_id' => 'required',
             'jenis' => 'required',
             'harga' => 'required|max:11',
         ]);
 
-        $validatedData['nama'] = ucwords($request->nama_paket);
-        $validatedData['slug'] = SlugService::createSlug(Paket::class, 'slug', $request->nama_paket);
+        $validatedData['nama'] = ucwords($request->nama);
+        $validatedData['slug'] = SlugService::createSlug(Paket::class, 'slug', $request->nama);
 
         Paket::where('id', $paket->id)->update($validatedData);
-        return redirect('/dashboard/paket')->with('success', 'Paket berhasil diperbarui!');
+        return redirect('/dashboard/pakets')->with('success', 'Paket berhasil diperbarui!');
     }
 
     /**
@@ -113,6 +120,6 @@ class PaketController extends Controller
     public function destroy(Paket $paket)
     {
         Paket::destroy($paket->id);
-        return redirect('/dashboard/paket')->with('success', 'Paket berhasil dihapus!');
+        return redirect('/dashboard/pakets')->with('success', 'Paket berhasil dihapus!');
     }
 }
