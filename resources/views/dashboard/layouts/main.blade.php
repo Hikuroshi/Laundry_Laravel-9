@@ -62,50 +62,26 @@
                                 <span>Dashboard</span>
                             </a>
                         </li>
-                        
-                        <li class="sidebar-item has-sub">
+
+                        <li class="sidebar-item">
                             <a href="/dashboard/outlets" class="sidebar-link">
-                                <i class="bi bi-stack"></i>
+                                <i class="bi bi-grid-fill"></i>
                                 <span>Outlet</span>
                             </a>
-                            <ul class="submenu">
-                                <li class="submenu-item">
-                                    <a href="/dashboard/outlets">Daftar Outlet</a>
-                                </li>
-                                <li class="submenu-item">
-                                    <a href="/dashboard/outlets/create">Tambah Outlet</a>
-                                </li>
-                            </ul>
                         </li>
-                        
-                        <li class="sidebar-item has-sub">
+
+                        <li class="sidebar-item">
                             <a href="/dashboard/pakets" class="sidebar-link">
-                                <i class="bi bi-stack"></i>
+                                <i class="bi bi-grid-fill"></i>
                                 <span>Paket / Produk</span>
                             </a>
-                            <ul class="submenu">
-                                <li class="submenu-item">
-                                    <a href="/dashboard/pakets">Daftar Paket</a>
-                                </li>
-                                <li class="submenu-item">
-                                    <a href="/dashboard/pakets/create">Tambah Paket</a>
-                                </li>
-                            </ul>
                         </li>
-                        
-                        <li class="sidebar-item has-sub">
+
+                        <li class="sidebar-item">
                             <a href="/dashboard/users" class="sidebar-link">
-                                <i class="bi bi-stack"></i>
+                                <i class="bi bi-grid-fill"></i>
                                 <span>Pengguna</span>
                             </a>
-                            <ul class="submenu">
-                                <li class="submenu-item">
-                                    <a href="/dashboard/users">Daftar Pengguna</a>
-                                </li>
-                                <li class="submenu-item">
-                                    <a href="/dashboard/users/create">Tambah Pengguna</a>
-                                </li>
-                            </ul>
                         </li>
                     </ul>
                 </div>

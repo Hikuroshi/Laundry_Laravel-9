@@ -30,7 +30,7 @@
 
                 <div class="form-group mb-3">
                     <label for="username">Username <span class="text-danger">*</span></label>
-                    <input name="username" type="text" id="username" class="form-control @error('username') is-invalid @enderror" value="{{ old('username') }}" placeholder="Masukan username user..." autofocus>
+                    <input name="username" type="text" id="username" class="form-control @error('username') is-invalid @enderror" value="{{ old('username') }}" placeholder="Masukan username user...">
                     @error('username')
                     <div class="invalid-feedback">
                         {{ $message }}
@@ -40,7 +40,7 @@
                 
                 <div class="form-group mb-3">
                     <label for="email">Email <span class="text-danger">*</span></label>
-                    <input name="email" type="email" id="email" class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}" placeholder="Masukan email user..." autofocus>
+                    <input name="email" type="email" id="email" class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}" placeholder="Masukan email user...">
                     @error('email')
                     <div class="invalid-feedback">
                         {{ $message }}
@@ -50,7 +50,7 @@
                 
                 <div class="form-group mb-3">
                     <label for="password">Password <span class="text-danger">*</span></label>
-                    <input name="password" type="password" id="password" class="form-control @error('password') is-invalid @enderror" value="{{ old('password') }}" placeholder="Masukan password user..." autofocus>
+                    <input name="password" type="password" id="password" class="form-control @error('password') is-invalid @enderror" value="{{ old('password') }}" placeholder="Masukan password user...">
                     @error('password')
                     <div class="invalid-feedback">
                         {{ $message }}
@@ -60,7 +60,7 @@
 
                 <div class="form-group mb-3">
                     <label for="password_confirmation">Password konfirmasi <span class="text-danger">*</span></label>
-                    <input name="password_confirmation" type="password" id="password_confirmation" class="form-control @error('password') is-invalid @enderror" value="{{ old('password_confirmation') }}" placeholder="Masukan password konfirmasi user..." autofocus>
+                    <input name="password_confirmation" type="password" id="password_confirmation" class="form-control @error('password') is-invalid @enderror" value="{{ old('password_confirmation') }}" placeholder="Masukan password konfirmasi user...">
                     @error('password')
                     <div class="invalid-feedback">
                         {{ $message }}

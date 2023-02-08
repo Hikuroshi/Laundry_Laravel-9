@@ -15,7 +15,7 @@
                     <i class="bx bx-x d-block d-sm-none"></i>
                     <span class="d-none d-sm-block">Batal</span>
                 </button>
-                <form action="/dashboard/pakets/{{ $user->username }}" method="post" class="d-inline">
+                <form action="/dashboard/users/{{ $user->username }}" method="post" class="d-inline">
                     @method('delete')
                     @csrf
                     <button class="btn btn-danger ml-1">Hapus</button>

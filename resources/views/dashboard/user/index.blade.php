@@ -40,6 +40,7 @@
                         <td>{{ $user->outlet->nama }}</td>
                         <td>{{ $user->roles }}</td>
                         <td>
+                            <a href="/dashboard/users/{{ $user->username }}/edit-password" class="btn btn-primary btn-sm icon rounded-circle"><i class="bi bi-key"></i></a>
                             <a href="/dashboard/users/{{ $user->username }}/edit" class="btn btn-primary btn-sm icon rounded-circle"><i class="bi bi-pencil"></i></a>
                             <button type="button" class="btn btn-danger btn-sm icon rounded-circle" data-bs-toggle="modal" data-bs-target="#hapus-{{ $user->username }}"><i class="bi bi-trash3"></i></button>
                             @include('dashboard.user.delete')

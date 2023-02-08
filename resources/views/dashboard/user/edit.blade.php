@@ -31,7 +31,7 @@
 
                 <div class="form-group mb-3">
                     <label for="username">Username <span class="text-danger">*</span></label>
-                    <input name="username" type="text" id="username" class="form-control @error('username') is-invalid @enderror" value="{{ old('username', $user->username) }}" placeholder="Masukan username user..." autofocus>
+                    <input name="username" type="text" id="username" class="form-control @error('username') is-invalid @enderror" value="{{ old('username', $user->username) }}" placeholder="Masukan username user...">
                     @error('username')
                     <div class="invalid-feedback">
                         {{ $message }}
@@ -41,7 +41,7 @@
                 
                 <div class="form-group mb-3">
                     <label for="email">Email <span class="text-danger">*</span></label>
-                    <input name="email" type="email" id="email" class="form-control @error('email') is-invalid @enderror" value="{{ old('email', $user->email) }}" placeholder="Masukan email user..." autofocus>
+                    <input name="email" type="email" id="email" class="form-control @error('email') is-invalid @enderror" value="{{ old('email', $user->email) }}" placeholder="Masukan email user...">
                     @error('email')
                     <div class="invalid-feedback">
                         {{ $message }}

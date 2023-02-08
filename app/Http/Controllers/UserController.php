@@ -101,14 +101,20 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        $validatedData = $request->validate([
+        $rules = [
             'nama' => 'required|max:100',
-            'username' => 'required|min:3|max:30|alpha_dash|unique:users',
-            'email' => 'required|email:dns|unique:users',
             'outlet_id' => 'required',
             'roles' => 'required',
-        ]);
+        ];
 
+        if ($request->username != $user->username) {
+            $rules['username'] = 'required|min:3|max:30|alpha_dash|unique:users';
+        }
+        if ($request->email != $user->email) {
+            $rules['email'] = 'required|email:dns|unique:users';
+        }
+
+        $validatedData = $request->validate($rules);
         $validatedData['nama'] = ucwords($request->nama);
 
         User::where('id', $user->id)->update($validatedData);
@@ -125,5 +131,25 @@ class UserController extends Controller
     {
         User::destroy($user->id);
         return redirect('/dashboard/users')->with('success', 'User berhasil dihapus!');
+    }
+
+    public function editPassword(User $user)
+    {
+        return view('dashboard.user.edit-password', [
+            'title' => 'Perbarui password User',
+            'user' => $user
+        ]);
+    }
+
+    public function updatePassword(Request $request, User $user)
+    {
+        $validatedData = $request->validate([
+            'password' => ['required', 'confirmed', Password::min(5)->letters()->numbers()],
+        ]);
+
+        $validatedData['password'] = Hash::make($request->password);
+
+        User::where('id', $user->id)->update($validatedData);
+        return redirect('/dashboard/users')->with('success', 'Password user berhasil perbarui!');
     }
 }
