@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::resource('/dashboard/outlets', OutletController::class)->except('show')->middleware('auth');
+Route::resource('/dashboard/outlets', OutletController::class)->except('show')->middleware('can:outlet');
 Route::resource('/dashboard/pakets', PaketController::class)->except('show')->middleware('auth');
 Route::resource('/dashboard/users', UserController::class)->except('show')->middleware('auth');
 
