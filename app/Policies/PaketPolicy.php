@@ -5,6 +5,7 @@ namespace App\Policies;
 use App\Models\Paket;
 use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
+use Illuminate\Auth\Access\Response;
 
 class PaketPolicy
 {
@@ -18,7 +19,7 @@ class PaketPolicy
      */
     public function viewAny(User $user)
     {
-        //
+        return $user->roles === 'admin' ? Response::allow() : Response::deny('Kamu tidak memiliki izin');
     }
 
     /**
@@ -30,7 +31,7 @@ class PaketPolicy
      */
     public function view(User $user, Paket $paket)
     {
-        //
+        return $user->roles === 'admin' ? Response::allow() : Response::deny('Kamu tidak memiliki izin');
     }
 
     /**
@@ -41,7 +42,7 @@ class PaketPolicy
      */
     public function create(User $user)
     {
-        //
+        return $user->roles === 'admin' ? Response::allow() : Response::deny('Kamu tidak memiliki izin');
     }
 
     /**
@@ -53,7 +54,7 @@ class PaketPolicy
      */
     public function update(User $user, Paket $paket)
     {
-        //
+        return $user->roles === 'admin' ? Response::allow() : Response::deny('Kamu tidak memiliki izin');
     }
 
     /**
@@ -65,7 +66,7 @@ class PaketPolicy
      */
     public function delete(User $user, Paket $paket)
     {
-        //
+        return $user->roles === 'admin' ? Response::allow() : Response::deny('Kamu tidak memiliki izin');
     }
 
     /**
@@ -77,7 +78,7 @@ class PaketPolicy
      */
     public function restore(User $user, Paket $paket)
     {
-        //
+        return $user->roles === 'admin' ? Response::allow() : Response::deny('Kamu tidak memiliki izin');
     }
 
     /**
@@ -89,6 +90,6 @@ class PaketPolicy
      */
     public function forceDelete(User $user, Paket $paket)
     {
-        //
+        return $user->roles === 'admin' ? Response::allow() : Response::deny('Kamu tidak memiliki izin');
     }
 }

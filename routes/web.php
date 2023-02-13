@@ -18,9 +18,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::resource('/dashboard/outlets', OutletController::class)->except('show')->middleware('can:outlet');
-Route::resource('/dashboard/pakets', PaketController::class)->except('show')->middleware('auth');
-Route::resource('/dashboard/users', UserController::class)->except('show')->middleware('auth');
+Route::resource('/dashboard/outlets', OutletController::class)->except('show')->middleware('can:roleAdmin,role');
+Route::resource('/dashboard/pakets', PaketController::class)->except('show')->middleware('can:paket');
+Route::resource('/dashboard/users', UserController::class)->except('show')->middleware('can:user');
 
 Route::controller(UserController::class)->group(function () {
     Route::get('/dashboard/users/{user:username}/edit-password', 'editPassword')->middleware('auth');
