@@ -39,7 +39,6 @@
                 <div class="sidebar-menu">
                     <ul class="menu">
                         <li class="sidebar-title">Menu</li>
-                        
                         <li class="sidebar-item {{ request()->is('dashboard') ? 'active' : '' }}">
                             <a href="/dashboard" class="sidebar-link">
                                 <i class="bi bi-grid-fill"></i>
@@ -47,6 +46,7 @@
                             </a>
                         </li>
                         
+                        @can('admin')
                         <li class="sidebar-item {{ request()->is('dashboard/outlets*') ? 'active' : '' }}">
                             <a href="/dashboard/outlets" class="sidebar-link">
                                 <i class="bi bi-grid-fill"></i>
@@ -67,6 +67,16 @@
                                 <span>Pengguna</span>
                             </a>
                         </li>
+                        @endcan
+                        @can('kasir')
+                        <li class="sidebar-item {{ request()->is('register*') ? 'active' : '' }}">
+                            <a href="/register" class="sidebar-link">
+                                <i class="bi bi-grid-fill"></i>
+                                <span>Registrasi Pengguna</span>
+                            </a>
+                        </li>
+                        @endcan
+                        
                     </ul>
                 </div>
             </div>

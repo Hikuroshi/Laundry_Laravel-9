@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Outlet;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -46,7 +47,7 @@ class LoginRegisterController extends Controller
     public function register()
     {
         return view('login-register.register', [
-            'title' => 'Register'
+            'title' => 'Register',
         ]);
     }
 
@@ -57,12 +58,12 @@ class LoginRegisterController extends Controller
             'username' => 'required|min:3|max:30|alpha_dash|unique:users',
             'email' => 'required|email:dns|unique:users',
             'password' => 'required|min:5|letters|numbers|confirmed',
-            'outlet_id' => 'required',
-            'roles' => 'required',
         ]);
 
         $validatedData['nama'] = ucwords($request->nama);
         $validatedData['password'] = Hash::make($request->password);
+        $validatedData['outlet_id'] = auth()->user()->outlet_id;
+        $validatedData['roles'] = 'pengguna';
 
         User::create($validatedData);
         return redirect('/login')->with('success', 'Pengguna berhasil ditambahkan!');

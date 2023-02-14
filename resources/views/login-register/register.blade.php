@@ -1,49 +1,83 @@
-@extends('layouts.main')
+@extends('dashboard.layouts.main')
 
 @section('container')
-<div class="row h-100">
-    <div class="col-lg-5 col-12 m-auto">
-        <h1 class="auth-title">Daftar.</h1>
-        <p class="auth-subtitle mb-5">
-            Isi data dulu ya biar kita saling kenal.
-        </p>
-        
-        <form action="index.html">
-            <div class="form-group position-relative has-icon-left mb-4">
-                <input type="text" class="form-control form-control-xl" placeholder="Email">
-                <div class="form-control-icon">
-                    <i class="bi bi-envelope"></i>
-                </div>
-            </div>
-            <div class="form-group position-relative has-icon-left mb-4">
-                <input type="text" class="form-control form-control-xl" placeholder="Username">
-                <div class="form-control-icon">
-                    <i class="bi bi-person"></i>
-                </div>
-            </div>
-            <div class="form-group position-relative has-icon-left mb-4">
-                <input type="password" class="form-control form-control-xl" placeholder="Password">
-                <div class="form-control-icon">
-                    <i class="bi bi-shield-lock"></i>
-                </div>
-            </div>
-            <div class="form-group position-relative has-icon-left mb-4">
-                <input type="password" class="form-control form-control-xl" placeholder="Confirm Password">
-                <div class="form-control-icon">
-                    <i class="bi bi-shield-lock"></i>
-                </div>
-            </div>
-            <button class="btn btn-primary btn-block btn-lg shadow-lg mt-5">
-                Daftar
-            </button>
-        </form>
-        <div class="text-center mt-3 text-lg fs-6">
-            <p class="text-gray-600">
-                Udah punya akun?
-                <a href="auth-login.html" class="font-bold">Masuk sini</a>.
+<div class="page-title">
+    <div class="row align-items-center">
+        <div class="col-12 col-md-6 order-md-1 order-last">
+            <h3>Tambah User baru</h3>
+            <p class="text-subtitle text-muted">
+                Pastiin data yang kamu masukin udah benar yaa
             </p>
         </div>
     </div>
 </div>
 
+<section class="section">
+    <div class="card">
+        <div class="card-body">
+            <form action="/dashboard/users" method="post">
+                @csrf
+                
+                <div class="form-group mb-3">
+                    <label for="nama">Nama User <span class="text-danger">*</span></label>
+                    <input name="nama" type="text" id="nama" class="form-control @error('nama') is-invalid @enderror" value="{{ old('nama') }}" placeholder="Masukan nama user..." autofocus>
+                    @error('nama')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                    @enderror
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="username">Username <span class="text-danger">*</span></label>
+                    <input name="username" type="text" id="username" class="form-control @error('username') is-invalid @enderror" value="{{ old('username') }}" placeholder="Masukan username user...">
+                    @error('username')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                    @enderror
+                </div>
+                
+                <div class="form-group mb-3">
+                    <label for="email">Email <span class="text-danger">*</span></label>
+                    <input name="email" type="email" id="email" class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}" placeholder="Masukan email user...">
+                    @error('email')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                    @enderror
+                </div>
+                
+                <div class="form-group mb-3">
+                    <label for="password">Password <span class="text-danger">*</span></label>
+                    <input name="password" type="password" id="password" class="form-control @error('password') is-invalid @enderror" value="{{ old('password') }}" placeholder="Masukan password user...">
+                    @error('password')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                    @enderror
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="password_confirmation">Password konfirmasi <span class="text-danger">*</span></label>
+                    <input name="password_confirmation" type="password" id="password_confirmation" class="form-control @error('password') is-invalid @enderror" value="{{ old('password_confirmation') }}" placeholder="Masukan password konfirmasi user...">
+                    @error('password')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                    @enderror
+                </div>
+                
+                <div class="d-flex justify-content-end">
+                    <button type="reset" class="btn btn-light-secondary me-1 mb-1">
+                        Reset
+                    </button>
+                    <button type="submit" class="btn btn-primary me-1 mb-1">
+                        Tambah
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
 @endsection

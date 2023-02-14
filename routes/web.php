@@ -18,9 +18,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::resource('/dashboard/outlets', OutletController::class)->except('show')->middleware('can:roleAdmin,role');
-Route::resource('/dashboard/pakets', PaketController::class)->except('show')->middleware('can:paket');
-Route::resource('/dashboard/users', UserController::class)->except('show')->middleware('can:user');
+Route::resource('/dashboard/outlets', OutletController::class)->except('show')->middleware('isAdmin');
+Route::resource('/dashboard/pakets', PaketController::class)->except('show')->middleware('isAdmin');
+Route::resource('/dashboard/users', UserController::class)->except('show')->middleware('isAdmin');
 
 Route::controller(UserController::class)->group(function () {
     Route::get('/dashboard/users/{user:username}/edit-password', 'editPassword')->middleware('auth');
@@ -31,7 +31,7 @@ Route::controller(LoginRegisterController::class)->group(function(){
     Route::get('/login', 'login')->name('login')->middleware('guest');
     Route::post('/login', 'authenticate');
     Route::get('/logout', 'logout')->middleware('auth');
-    Route::get('/register', 'register')->middleware('auth');
+    Route::get('/register', 'register')->middleware('isKasir');
     Route::post('/register', 'registration');
 });
 
