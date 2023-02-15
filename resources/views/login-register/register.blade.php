@@ -15,7 +15,7 @@
 <section class="section">
     <div class="card">
         <div class="card-body">
-            <form action="/dashboard/users" method="post">
+            <form action="/register" method="post">
                 @csrf
                 
                 <div class="form-group mb-3">

@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rules\Password;
 
 class LoginRegisterController extends Controller
 {
@@ -56,8 +57,8 @@ class LoginRegisterController extends Controller
         $validatedData = $request->validate([
             'nama' => 'required|max:100',
             'username' => 'required|min:3|max:30|alpha_dash|unique:users',
-            'email' => 'required|email:dns|unique:users',
-            'password' => 'required|min:5|letters|numbers|confirmed',
+            'email' => 'required|email|unique:users',
+            'password' => ['required', 'confirmed', Password::min(5)->letters()->numbers()],
         ]);
 
         $validatedData['nama'] = ucwords($request->nama);
@@ -66,6 +67,6 @@ class LoginRegisterController extends Controller
         $validatedData['roles'] = 'pengguna';
 
         User::create($validatedData);
-        return redirect('/login')->with('success', 'Pengguna berhasil ditambahkan!');
+        return redirect('/dashboard')->with('success', 'Pengguna berhasil ditambahkan!');
     }
 }
