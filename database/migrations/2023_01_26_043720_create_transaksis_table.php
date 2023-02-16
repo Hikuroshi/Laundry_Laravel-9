@@ -23,7 +23,7 @@ return new class extends Migration
             $table->foreignIdFor(Member::class)->index();
             $table->dateTime('tgl');
             $table->dateTime('batas_waktu');
-            $table->dateTime('tgl_bayar');
+            $table->dateTime('tgl_bayar')->nullable();
             $table->integer('biaya_tambahan');
             $table->double('diskon');
             $table->integer('pajak');

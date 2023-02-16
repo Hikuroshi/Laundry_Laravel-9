@@ -4,6 +4,7 @@ use App\Http\Controllers\LoginRegisterController;
 use App\Http\Controllers\OutletController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\PaketController;
+use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,6 +22,7 @@ use Illuminate\Support\Facades\Route;
 Route::resource('/dashboard/outlets', OutletController::class)->except('show')->middleware('isAdmin');
 Route::resource('/dashboard/pakets', PaketController::class)->except('show')->middleware('isAdmin');
 Route::resource('/dashboard/users', UserController::class)->except('show')->middleware('isAdmin');
+Route::resource('/dashboard/transaksis', TransaksiController::class)->except('show')->middleware('isKasir');
 
 Route::controller(UserController::class)->group(function () {
     Route::get('/dashboard/users/{user:username}/edit-password', 'editPassword')->middleware('auth');

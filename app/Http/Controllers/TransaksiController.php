@@ -7,6 +7,8 @@ use App\Models\Outlet;
 use App\Models\Transaksi;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Str;
 
 class TransaksiController extends Controller
 {
@@ -33,13 +35,11 @@ class TransaksiController extends Controller
         $all_status = ['baru', 'proses', 'selesai', 'diambil'];
         $all_dibayar = ['telah_bayar', 'belum_bayar'];
 
-        return view('dashboard.transaksi.index', [
+        return view('dashboard.transaksi.create', [
             'title' => 'Tambah Transaksi',
-            'outlets' => Outlet::all(),
             'members' => Member::all(),
             'all_status' => $all_status,
             'all_dibayar' => $all_dibayar,
-            'users' => User::all()
         ]);
     }
 
@@ -52,22 +52,21 @@ class TransaksiController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'outlet_id' => 'required',
-            'kode_invoice' => 'required|max:100|unique:tranksaksis',
             'member_id' => 'required',
-            'tgl' => 'required|date|after_or_equal:now',
-            'batas_waktu' => 'required|date|after_or_equal:now',
-            'tgl_bayar' => 'required|date|after_or_equal:now',
             'biaya_tambahan' => 'required|max:10',
-            'diskon' => 'required',
-            'pajak' => 'required',
-            'status' => 'required',
             'dibayar' => 'required',
-            'user_id' => 'required',
         ]);
 
+        $validatedData['kode_invoice'] = Str::uuid();
+        $validatedData['outlet_id'] = auth()->user()->outlet_id;
+        $validatedData['tgl'] = today();
+        $validatedData['batas_waktu'] = Carbon::create(today())->addDays(5);
+        $validatedData['diskon'] = $request->member_id ? '5%': '0%';
+        $validatedData['pajak'] = 900;
+        $validatedData['user_id'] = auth()->user()->id;
+
         Transaksi::create($validatedData);
-        return redirect('/dashboard/outlets')->with('success', 'Transaksi berhasil ditambahkan!');
+        return redirect('/dashboard/transaksi')->with('success', 'Transaksi berhasil ditambahkan!');
     }
 
     /**
