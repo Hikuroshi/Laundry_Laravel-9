@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Outlet;
 use Illuminate\Http\Request;
 use \Cviebrock\EloquentSluggable\Services\SlugService;
-use Validator;
 
 class OutletController extends Controller
 {
@@ -51,6 +50,7 @@ class OutletController extends Controller
             'telepon.regex' => 'The telepon must be start with: +62/62/0.',
         ]);
 
+        $validatedData['nama'] = ucwords($request->nama);
         $validatedData['slug'] = SlugService::createSlug(Outlet::class, 'slug', $request->nama);
 
         Outlet::create($validatedData);
@@ -65,10 +65,7 @@ class OutletController extends Controller
      */
     public function show(Outlet $outlet)
     {
-        return view('dashboard.outlet.show', [
-            'title' => 'Lihat Outlet',
-            'outlets' => $outlet
-        ]);
+        //
     }
 
     /**
@@ -94,13 +91,17 @@ class OutletController extends Controller
      */
     public function update(Request $request, Outlet $outlet)
     {
-        $validatedData = $request->validate([
+        $rules = [
             'nama' => 'required|max:100',
             'alamat' => 'required',
-            'telepon' => ['required', 'min:11', 'max:13', 'unique:outlets', 'regex:/^(\+62|62|0)8[1-9][0-9]{6,10}$/'],
-        ],
-        [
-            'telepon.regex' => 'The telepon must be start with: +62/62/0.',
+        ];
+
+        if ($request->telepon != $outlet->telepon) {
+            $rules['telepon'] = ['required', 'min:11', 'max:13', 'unique:members', 'regex:/^(\+62|62|0)8[1-9][0-9]{6,10}$/'];
+        }
+
+        $validatedData = $request->validate($rules, [
+            'telepon.regex' => 'The telepon must be start with: +62/62/0.'
         ]);
 
         $validatedData['nama'] = ucwords($request->nama);

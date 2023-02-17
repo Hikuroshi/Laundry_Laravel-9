@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('slug', 100)->unique();
             $table->text('alamat');
             $table->enum('jenis_kelamin', ['L', 'P']);
-            $table->string('tlp', 15);
+            $table->string('telepon', 15);
             $table->timestamps();
         });
     }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Member;
+use Cviebrock\EloquentSluggable\Services\SlugService;
 use Illuminate\Http\Request;
 
 class MemberController extends Controller
@@ -14,7 +15,10 @@ class MemberController extends Controller
      */
     public function index()
     {
-        //
+        return view('dashboard.member.index', [
+            'title' => 'Member',
+            'members' => Member::all()
+        ]);
     }
 
     /**
@@ -24,7 +28,12 @@ class MemberController extends Controller
      */
     public function create()
     {
-        //
+        $all_jenis_kelamin = ['L', 'P'];
+
+        return view('dashboard.member.create', [
+            'title' => 'Tambah Member',
+            'all_jenis_kelamin' => $all_jenis_kelamin
+        ]);
     }
 
     /**
@@ -35,7 +44,21 @@ class MemberController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'nama' => 'required|max:100',
+            'alamat' => 'required',
+            'jenis_kelamin' => 'required',
+            'telepon' => ['required', 'min:11', 'max:13', 'unique:members', 'regex:/^(\+62|62|0)8[1-9][0-9]{6,10}$/'],
+        ],
+        [
+            'telepon.regex' => 'The telepon must be start with: +62/62/0.',
+        ]);
+
+        $validatedData['nama'] = ucwords($request->nama);
+        $validatedData['slug'] = SlugService::createSlug(Member::class, 'slug', $request->nama);
+
+        Member::create($validatedData);
+        return redirect('/dashboard/members')->with('success', 'Member berhasil ditambahkan!');
     }
 
     /**
@@ -57,7 +80,12 @@ class MemberController extends Controller
      */
     public function edit(Member $member)
     {
-        //
+        $all_jenis_kelamin = ['L', 'P'];
+
+        return view('dashboard.member.edit', [
+            'title' => 'Edit Member',
+            'all_jenis_kelamin' => $all_jenis_kelamin
+        ]);
     }
 
     /**
@@ -69,7 +97,25 @@ class MemberController extends Controller
      */
     public function update(Request $request, Member $member)
     {
-        //
+        $rules = [
+            'nama' => 'required|max:100',
+            'alamat' => 'required',
+            'jenis_kelamin' => 'required',
+        ];
+
+        if ($request->telepon != $member->telepon) {
+            $rules['telepon'] = ['required', 'min:11', 'max:13', 'unique:members', 'regex:/^(\+62|62|0)8[1-9][0-9]{6,10}$/'];
+        }
+
+        $validatedData = $request->validate($rules, [
+            'telepon.regex' => 'The telepon must be start with: +62/62/0.'
+        ]);
+
+        $validatedData['nama'] = ucwords($request->nama);
+        $validatedData['slug'] = SlugService::createSlug(Member::class, 'slug', $request->nama);
+
+        Member::where('id', $member->id)->update($validatedData);
+        return redirect('/dashboard/members')->with('success', 'Member berhasil diperbarui!');
     }
 
     /**
@@ -80,6 +126,7 @@ class MemberController extends Controller
      */
     public function destroy(Member $member)
     {
-        //
+        Member::destroy($member->id);
+        return redirect('/dashboard/members')->with('success', 'Member berhasil dihapus!');
     }
 }

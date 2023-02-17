@@ -67,6 +67,13 @@
                                 <span>Pengguna</span>
                             </a>
                         </li>
+
+                        <li class="sidebar-item {{ request()->is('dashboard/members*') ? 'active' : '' }}">
+                            <a href="/dashboard/members" class="sidebar-link">
+                                <i class="bi bi-grid-fill"></i>
+                                <span>Pelanggan</span>
+                            </a>
+                        </li>
                         @endcan
                         @can('kasir')
                         <li class="sidebar-item {{ request()->is('register*') ? 'active' : '' }}">

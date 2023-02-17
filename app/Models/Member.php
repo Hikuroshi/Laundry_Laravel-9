@@ -15,4 +15,18 @@ class Member extends Model
     {
         return $this->hasMany(Transaksi::class, 'transaksi_id');
     }
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+
+    public function sluggable(): array
+    {
+        return [
+            'slug' => [
+                'source' => 'nama'
+            ]
+        ];
+    }
 }
