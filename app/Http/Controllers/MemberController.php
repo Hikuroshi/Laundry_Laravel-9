@@ -15,6 +15,8 @@ class MemberController extends Controller
      */
     public function index()
     {
+        $this->authorize('viewAny', Member::class);
+
         return view('dashboard.member.index', [
             'title' => 'Member',
             'members' => Member::all()
@@ -28,6 +30,8 @@ class MemberController extends Controller
      */
     public function create()
     {
+        $this->authorize('create', Member::class);
+
         $all_jenis_kelamin = ['L', 'P'];
 
         return view('dashboard.member.create', [
@@ -44,6 +48,8 @@ class MemberController extends Controller
      */
     public function store(Request $request)
     {
+        $this->authorize('create', Member::class);
+
         $validatedData = $request->validate([
             'nama' => 'required|max:100',
             'alamat' => 'required',
@@ -80,10 +86,13 @@ class MemberController extends Controller
      */
     public function edit(Member $member)
     {
+        $this->authorize('update', Member::class);
+
         $all_jenis_kelamin = ['L', 'P'];
 
         return view('dashboard.member.edit', [
             'title' => 'Edit Member',
+            'member' => $member,
             'all_jenis_kelamin' => $all_jenis_kelamin
         ]);
     }
@@ -97,6 +106,8 @@ class MemberController extends Controller
      */
     public function update(Request $request, Member $member)
     {
+        $this->authorize('update', Member::class);
+
         $rules = [
             'nama' => 'required|max:100',
             'alamat' => 'required',
@@ -126,6 +137,8 @@ class MemberController extends Controller
      */
     public function destroy(Member $member)
     {
+        $this->authorize('delete', Member::class);
+
         Member::destroy($member->id);
         return redirect('/dashboard/members')->with('success', 'Member berhasil dihapus!');
     }

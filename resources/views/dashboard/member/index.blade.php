@@ -3,13 +3,13 @@
 @section('container')
 <div class="page-title">
     <div class="row align-items-center">
-        <div class="col-12 col-md-6 order-md-1 order-last">
+        <div class="col-12 col-md-8 order-md-1 order-last">
             <h3>Dashboard Pelanggan</h3>
             <p class="text-subtitle text-muted">
                 Disini kamu bisa menambah, mengubah, dan menghapus data Pelanggan.
             </p>
         </div>
-        <div class="col-12 col-md-6 text-end order-md-2 order-first">
+        <div class="col-12 col-md-4 text-end order-md-2 order-first">
             <a href="/dashboard/members/create" class="btn btn-primary">Tambah Pelanggan</a>
         </div>
     </div>

@@ -4,7 +4,7 @@
 <div class="page-title">
     <div class="row align-items-center">
         <div class="col-12 col-md-6 order-md-1 order-last">
-            <h3>Perbarui Outlet {{ $outlet->nama }}</h3>
+            <h3>Perbarui Pelanggan {{ $member->nama }}</h3>
             <p class="text-subtitle text-muted">
                 Pastiin data yang kamu masukin udah benar yaa
             </p>
@@ -15,13 +15,13 @@
 <section class="section">
     <div class="card">
         <div class="card-body">
-            <form action="/dashboard/members/{{ $outlet->slug }}" method="post">
+            <form action="/dashboard/members/{{ $member->slug }}" method="post">
                 @csrf
                 @method('put')
                 
                 <div class="form-group mb-3">
-                    <label for="nama">Nama Outlet <span class="text-danger">*</span></label>
-                    <input name="nama" type="text" id="nama" class="form-control @error('nama') is-invalid @enderror" value="{{ old('nama', $outlet->nama) }}" placeholder="Masukan nama outlet..." autofocus>
+                    <label for="nama">Nama Pelanggan <span class="text-danger">*</span></label>
+                    <input name="nama" type="text" id="nama" class="form-control @error('nama') is-invalid @enderror" value="{{ old('nama', $member->nama) }}" placeholder="Masukan nama member..." autofocus>
                     @error('nama')
                     <div class="invalid-feedback">
                         {{ $message }}
@@ -31,7 +31,7 @@
                 
                 <div class="form-group mb-3">
                     <label for="alamat">Alamat <span class="text-danger">*</span></label>
-                    <textarea name="alamat" class="form-control @error('alamat') is-invalid @enderror" rows="3" placeholder="Masukan alamat outlet...">{{ old('alamat', $outlet->alamat) }}</textarea>
+                    <textarea name="alamat" class="form-control @error('alamat') is-invalid @enderror" rows="3" placeholder="Masukan alamat member...">{{ old('alamat', $member->alamat) }}</textarea>
                     @error('alamat')
                     <div class="invalid-feedback">
                         {{ $message }}
@@ -44,7 +44,7 @@
                     <select name="jenis_kelamin" id="jenis_kelamin" class="form-control @error('jenis_kelamin') is-invalid @enderror">
                         <option value="">Pilih Jenis kelamin</option>
                         @foreach ($all_jenis_kelamin as $jenis_kelamin)
-                        <option value="{{ $jenis_kelamin }}" @selected(old('jenis_kelamin', $paket->jenis_kelamin) == $jenis_kelamin)>
+                        <option value="{{ $jenis_kelamin }}" @selected(old('jenis_kelamin', $member->jenis_kelamin) == $jenis_kelamin)>
                             {{ $jenis_kelamin }}
                         </option>
                         @endforeach
@@ -58,7 +58,7 @@
                 
                 <div class="form-group mb-3">
                     <label for="telepon">Nomor Telepon <span class="text-danger">*</span></label>
-                    <input name="telepon" type="number" id="telepon" class="form-control @error('telepon') is-invalid @enderror" value="{{ old('telepon', $outlet->telepon) }}" placeholder="Masukan nomor telepon...">
+                    <input name="telepon" type="number" id="telepon" class="form-control @error('telepon') is-invalid @enderror" value="{{ old('telepon', $member->telepon) }}" placeholder="Masukan nomor telepon...">
                     @error('telepon')
                     <div class="invalid-feedback">
                         {{ $message }}

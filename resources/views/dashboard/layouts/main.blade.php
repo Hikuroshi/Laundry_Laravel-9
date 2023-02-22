@@ -68,7 +68,7 @@
                             </a>
                         </li>
 
-                        <li class="sidebar-item {{ request()->is('dashboard/members*') ? 'active' : '' }}">
+                        <li class="sidebar-item {{ request()->is('dashboard/members*') ? request()->is('dashboard/members/create') ? '' : 'active' : '' }}">
                             <a href="/dashboard/members" class="sidebar-link">
                                 <i class="bi bi-grid-fill"></i>
                                 <span>Pelanggan</span>
@@ -76,10 +76,16 @@
                         </li>
                         @endcan
                         @can('kasir')
-                        <li class="sidebar-item {{ request()->is('register*') ? 'active' : '' }}">
-                            <a href="/register" class="sidebar-link">
+                        <li class="sidebar-item {{ request()->is('dashboard/members/create') ? 'active' : '' }}">
+                            <a href="/dashboard/members/create" class="sidebar-link">
                                 <i class="bi bi-grid-fill"></i>
-                                <span>Registrasi Pengguna</span>
+                                <span>Registrasi Pelanggan</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item {{ request()->is('dashboard/transaksis') ? 'active' : '' }}">
+                            <a href="/dashboard/transaksis" class="sidebar-link">
+                                <i class="bi bi-grid-fill"></i>
+                                <span>Transaksi</span>
                             </a>
                         </li>
                         @endcan

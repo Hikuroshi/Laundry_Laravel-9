@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DetailTransaksi;
 use App\Models\Member;
 use App\Models\Outlet;
+use App\Models\Paket;
 use App\Models\Transaksi;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -38,6 +40,8 @@ class TransaksiController extends Controller
         return view('dashboard.transaksi.create', [
             'title' => 'Tambah Transaksi',
             'members' => Member::all(),
+            'transaksis' => Transaksi::all(),
+            'pakets' => Paket::all(),
             'all_status' => $all_status,
             'all_dibayar' => $all_dibayar,
         ]);
@@ -51,21 +55,22 @@ class TransaksiController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
+        $validateTransaksi = $request->validate([
             'member_id' => 'required',
             'biaya_tambahan' => 'required|max:10',
+            'diskon' => 'required|max:2',
             'dibayar' => 'required',
         ]);
 
-        $validatedData['kode_invoice'] = Str::uuid();
-        $validatedData['outlet_id'] = auth()->user()->outlet_id;
-        $validatedData['tgl'] = today();
-        $validatedData['batas_waktu'] = Carbon::create(today())->addDays(5);
-        $validatedData['diskon'] = $request->member_id ? '5%': '0%';
-        $validatedData['pajak'] = 900;
-        $validatedData['user_id'] = auth()->user()->id;
+        $validateTransaksi['kode_invoice'] = Str::uuid();
+        $validateTransaksi['outlet_id'] = auth()->user()->outlet_id;
+        $validateTransaksi['tgl'] = today();
+        $validateTransaksi['batas_waktu'] = Carbon::create(today())->addDays(5);
+        $validateTransaksi['diskon'] = $request->diskon . '%';
+        $validateTransaksi['pajak'] = 1000;
+        $validateTransaksi['user_id'] = auth()->user()->id;
 
-        Transaksi::create($validatedData);
+        Transaksi::create($validateTransaksi);
         return redirect('/dashboard/transaksi')->with('success', 'Transaksi berhasil ditambahkan!');
     }
 

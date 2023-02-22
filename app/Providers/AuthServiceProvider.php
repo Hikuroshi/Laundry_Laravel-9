@@ -16,6 +16,7 @@ class AuthServiceProvider extends ServiceProvider
         'App\Models\Outlet' => 'App\Policies\OutletPolicy',
         'App\Models\Paket' => 'App\Policies\PaketPolicy',
         'App\Models\User' => 'App\Policies\UserPolicy',
+        'App\Models\Member' => 'App\Policies\MemberPolicy',
     ];
 
     /**

@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
         Outlet::create([
             'nama' => 'Kambenk Hejo',
             'slug' => 'kambenk-hejo',
+            'outlet_id' => '1',
             'alamat' => 'Jepang',
             'telepon' => '083214653796'
         ]);

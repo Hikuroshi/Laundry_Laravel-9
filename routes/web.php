@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DetailTransaksiController;
 use App\Http\Controllers\LoginRegisterController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\OutletController;
@@ -23,11 +24,12 @@ use Illuminate\Support\Facades\Route;
 Route::resource('/dashboard/outlets', OutletController::class)->except('show')->middleware('isAdmin');
 Route::resource('/dashboard/pakets', PaketController::class)->except('show')->middleware('isAdmin');
 Route::resource('/dashboard/users', UserController::class)->except('show')->middleware('isAdmin'); 
-Route::resource('/dashboard/members', MemberController::class)->except('show')->middleware('isAdmin'); 
+Route::resource('/dashboard/members', MemberController::class)->except('show')->middleware('auth');
 Route::resource('/dashboard/transaksis', TransaksiController::class)->except('show')->middleware('isKasir');
+Route::resource('/dashboard/detail-transaksis', DetailTransaksiController::class)->except('show')->middleware('isKasir');
 
 Route::controller(UserController::class)->group(function () {
-    Route::get('/dashboard/users/{user:username}/edit-password', 'editPassword')->middleware('auth');
+    Route::get('/dashboard/users/{user:username}/edit-password', 'editPassword')->middleware('isAdmin');
     Route::put('/dashboard/users/{user:username}/edit-password', 'updatePassword');
 });
 
