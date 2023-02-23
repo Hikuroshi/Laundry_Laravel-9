@@ -17,9 +17,6 @@
         <div class="card-body">
             <form action="/dashboard/transaksis" method="post">
                 @csrf
-                
-                <h3 class="mb-3">Transaksi</h3>
-                <hr>
 
                 <div class="form-group mb-4">
                     <label for="member" class="form-label">Member <span class="text-danger">*</span></label>
@@ -74,9 +71,6 @@
                     </div>
                     @enderror
                 </div>
-                
-                <h3 class="mb-3 mt-5">Detail Transaksi</h3>
-                <hr>
 
                 <div class="form-group mb-4">
                     <label for="paket" class="form-label">Paket <span class="text-danger">*</span></label>

@@ -17,7 +17,8 @@ return new class extends Migration
     {
         Schema::create('detail_transaksis', function (Blueprint $table) {
             $table->increments('id');
-            $table->foreignIdFor(Transaksi::class)->index();
+            $table->string('kode_invoice', 100)->unique()->index();
+            // $table->foreignIdFor(Transaksi::class, 'kode_invoice')->string()->index();
             $table->foreignIdFor(Paket::class)->index();
             $table->double('qty');
             $table->text('keterangan');

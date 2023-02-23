@@ -21,7 +21,6 @@ class DatabaseSeeder extends Seeder
         Outlet::create([
             'nama' => 'Kambenk Hejo',
             'slug' => 'kambenk-hejo',
-            'outlet_id' => '1',
             'alamat' => 'Jepang',
             'telepon' => '083214653796'
         ]);
@@ -31,7 +30,7 @@ class DatabaseSeeder extends Seeder
             'username' => 'admin',
             'email' => 'admin@gmail.com',
             'password' => bcrypt('admin1'),
-            'outlet_id' => 0,
+            'outlet_id' => '1',
             'roles' => 'admin'
         ]);
     }

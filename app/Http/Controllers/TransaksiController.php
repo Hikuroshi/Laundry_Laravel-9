@@ -10,6 +10,7 @@ use App\Models\Transaksi;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 
 class TransaksiController extends Controller
@@ -66,12 +67,20 @@ class TransaksiController extends Controller
         $validateTransaksi['outlet_id'] = auth()->user()->outlet_id;
         $validateTransaksi['tgl'] = today();
         $validateTransaksi['batas_waktu'] = Carbon::create(today())->addDays(5);
-        $validateTransaksi['diskon'] = $request->diskon . '%';
         $validateTransaksi['pajak'] = 1000;
         $validateTransaksi['user_id'] = auth()->user()->id;
 
+        $validateDetail = $request->validate([
+            'paket_id' => 'required',
+            'qty' => 'required',
+            'keterangan' => 'required'
+        ]);
+
+        $validateDetail['kode_invoice'] = $validateTransaksi['kode_invoice'];
+
         Transaksi::create($validateTransaksi);
-        return redirect('/dashboard/transaksi')->with('success', 'Transaksi berhasil ditambahkan!');
+        DetailTransaksi::create($validateDetail);    
+        return redirect('/dashboard/transaksis')->with('success', 'Transaksi berhasil ditambahkan!');
     }
 
     /**
