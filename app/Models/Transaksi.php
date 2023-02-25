@@ -18,7 +18,7 @@ class Transaksi extends Model
 
     public function detailTransaksi()
     {
-        return $this->belongsTo(DetailTransaksi::class, 'detail_transaksi_id');
+        return $this->hasOne(DetailTransaksi::class, 'kode_invoice', 'kode_invoice');
     }
 
     public function member()
@@ -29,5 +29,10 @@ class Transaksi extends Model
     public function outlet()
     {
         return $this->belongsTo(Outlet::class, 'outlet_id');
+    }
+
+    public function getRouteKeyName()
+    {
+        return 'kode_invoice';
     }
 }

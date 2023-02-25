@@ -4,13 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\DetailTransaksi;
 use App\Models\Member;
-use App\Models\Outlet;
 use App\Models\Paket;
 use App\Models\Transaksi;
-use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 
 class TransaksiController extends Controller
@@ -24,7 +21,8 @@ class TransaksiController extends Controller
     {
         return view('dashboard.transaksi.index', [
             'title' => 'Transaksi',
-            'transaksis' => Transaksi::all()
+            'transaksis' => Transaksi::all(),
+            'detail_transaksis' => DetailTransaksi::all()
         ]);
     }
 
@@ -41,7 +39,6 @@ class TransaksiController extends Controller
         return view('dashboard.transaksi.create', [
             'title' => 'Tambah Transaksi',
             'members' => Member::all(),
-            'transaksis' => Transaksi::all(),
             'pakets' => Paket::all(),
             'all_status' => $all_status,
             'all_dibayar' => $all_dibayar,
@@ -63,12 +60,16 @@ class TransaksiController extends Controller
             'dibayar' => 'required',
         ]);
 
-        $validateTransaksi['kode_invoice'] = Str::uuid();
+        $validateTransaksi['kode_invoice'] = Str::ulid();
         $validateTransaksi['outlet_id'] = auth()->user()->outlet_id;
-        $validateTransaksi['tgl'] = today();
-        $validateTransaksi['batas_waktu'] = Carbon::create(today())->addDays(5);
+        $validateTransaksi['tgl'] = now();
+        $validateTransaksi['batas_waktu'] = Carbon::create(now())->addDays(5);
         $validateTransaksi['pajak'] = 1000;
         $validateTransaksi['user_id'] = auth()->user()->id;
+
+        if ($request->dibayar == 'telah_bayar') {
+            $validateTransaksi['tgl_bayar'] = now();
+        }
 
         $validateDetail = $request->validate([
             'paket_id' => 'required',
@@ -91,7 +92,10 @@ class TransaksiController extends Controller
      */
     public function show(Transaksi $transaksi)
     {
-        //
+        return view('dashboard.transaksi.show', [
+            'title' => 'Transaksi ' . $transaksi->member->nama,
+            'transaksi' => $transaksi,
+        ]);
     }
 
     /**
@@ -125,6 +129,8 @@ class TransaksiController extends Controller
      */
     public function destroy(Transaksi $transaksi)
     {
-        //
+        Transaksi::where('kode_invoice', $transaksi->kode_invoice)->delete();
+        DetailTransaksi::where('kode_invoice', $transaksi->kode_invoice)->delete();
+        return redirect('/dashboard/transaksis')->with('success', 'Transaksi berhasil dihapus!');
     }
 }

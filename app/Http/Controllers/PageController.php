@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Transaksi;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
@@ -18,5 +19,10 @@ class PageController extends Controller
         return view('dashboard.index', [
             'title' => 'Dashboard'
         ]);
+    }
+
+    public function test()
+    {
+        return Transaksi::find(8)->detailTransaksi->keterangan;
     }
 }

@@ -25,8 +25,7 @@ Route::resource('/dashboard/outlets', OutletController::class)->except('show')->
 Route::resource('/dashboard/pakets', PaketController::class)->except('show')->middleware('isAdmin');
 Route::resource('/dashboard/users', UserController::class)->except('show')->middleware('isAdmin'); 
 Route::resource('/dashboard/members', MemberController::class)->except('show')->middleware('auth');
-Route::resource('/dashboard/transaksis', TransaksiController::class)->except('show')->middleware('isKasir');
-Route::resource('/dashboard/detail-transaksis', DetailTransaksiController::class)->except('show')->middleware('isKasir');
+Route::resource('/dashboard/transaksis', TransaksiController::class)->except('edit', 'update')->middleware('isKasir');
 
 Route::controller(UserController::class)->group(function () {
     Route::get('/dashboard/users/{user:username}/edit-password', 'editPassword')->middleware('isAdmin');
@@ -45,3 +44,5 @@ Route::controller(PageController::class)->group(function(){
     Route::get('/', 'index');
     Route::get('/dashboard', 'dashboard')->middleware('auth');
 });
+
+Route::get('/test', [PageController::class, 'test']);

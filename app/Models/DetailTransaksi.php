@@ -13,11 +13,16 @@ class DetailTransaksi extends Model
 
     public function transaksi()
     {
-        return $this->hasOne(Transaksi::class, 'kode_invoice');
+        return $this->belongsTo(Transaksi::class, 'kode_invoice');
     }
 
     public function paket()
     {
         return $this->belongsTo(Paket::class, 'paket_id');
+    }
+
+    public function getRouteKeyName()
+    {
+        return 'kode_invoice';
     }
 }
