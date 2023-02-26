@@ -15,12 +15,12 @@
 <section class="section">
     <div class="card">
         <div class="card-header">
-            <h2 class="card-title">Table with outer spacing</h2>
+            <h2 class="card-title">Data Transaksi</h2>
         </div>
         <div class="card-content">
             <div class="card-body">
-                <div class="row">
-                    <div class="col-md-6">
+                <div class="d-flex">
+                    <div class="col-12 col-lg-6">
                         <div class="table-responsive">
                             <table class="table">
                                 <tr>
@@ -41,7 +41,7 @@
                                 </tr>
                                 <tr>
                                     <td>QTY</td>
-                                    <td>{{ $transaksi->detailTransaksi->qty }}</td>
+                                    <td>{{ $transaksi->detailTransaksi->qty }}%</td>
                                 </tr>
                                 <tr>
                                     <td>Tanggal</td>

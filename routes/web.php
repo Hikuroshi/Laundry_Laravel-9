@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\DetailTransaksiController;
 use App\Http\Controllers\LoginRegisterController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\OutletController;
@@ -30,6 +29,10 @@ Route::resource('/dashboard/transaksis', TransaksiController::class)->except('ed
 Route::controller(UserController::class)->group(function () {
     Route::get('/dashboard/users/{user:username}/edit-password', 'editPassword')->middleware('isAdmin');
     Route::put('/dashboard/users/{user:username}/edit-password', 'updatePassword');
+});
+
+Route::controller(TransaksiController::class)->group(function () {
+    Route::get('/dashboard/transaksis/{transaksi:kode_invoice}/print', 'print');
 });
 
 Route::controller(LoginRegisterController::class)->group(function(){

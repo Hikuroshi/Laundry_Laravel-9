@@ -133,4 +133,12 @@ class TransaksiController extends Controller
         DetailTransaksi::where('kode_invoice', $transaksi->kode_invoice)->delete();
         return redirect('/dashboard/transaksis')->with('success', 'Transaksi berhasil dihapus!');
     }
+
+    public function print(Transaksi $transaksi)
+    {
+        return view('dashboard.transaksi.print', [
+            'title' => 'Transaksi ' . $transaksi->member->nama,
+            'transaksi' => $transaksi,
+        ]);
+    }
 }

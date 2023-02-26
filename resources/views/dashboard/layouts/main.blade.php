@@ -67,7 +67,7 @@
                                 <span>Pengguna</span>
                             </a>
                         </li>
-
+                        
                         <li class="sidebar-item {{ request()->is('dashboard/members*') ? request()->is('dashboard/members/create') ? '' : 'active' : '' }}">
                             <a href="/dashboard/members" class="sidebar-link">
                                 <i class="bi bi-grid-fill"></i>
@@ -161,6 +161,24 @@
             </div>
         </div>
     </div>
+    
+    <script>
+        var doc = new jsPDF();
+        var specialElementHandlers = {
+            '#editor': function (element, renderer) {
+                return true;
+            }
+        };
+        
+        $('#cmd').click(function () {
+            doc.fromHTML($('#content').html(), 15, 15, {
+                'width': 170,
+                'elementHandlers': specialElementHandlers
+            });
+            doc.save('sample-file.pdf');
+        });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="/assets/js/bootstrap.js"></script>
     <script src="/assets/js/app.js"></script>
     
