@@ -20,19 +20,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::resource('/dashboard/outlets', OutletController::class)->except('show')->middleware('isAdmin');
-Route::resource('/dashboard/pakets', PaketController::class)->except('show')->middleware('isAdmin');
-Route::resource('/dashboard/users', UserController::class)->except('show')->middleware('isAdmin'); 
-Route::resource('/dashboard/members', MemberController::class)->except('show')->middleware('auth');
-Route::resource('/dashboard/transaksis', TransaksiController::class)->except('edit', 'update')->middleware('isKasir');
+Route::controller(TransaksiController::class)->group(function () {
+    Route::get('/dashboard/transaksis/{transaksi:kode_invoice}/print', 'print');
+    Route::get('/dashboard/transaksis/export', 'export')->middleware('isAdmin');
+});
 
 Route::controller(UserController::class)->group(function () {
     Route::get('/dashboard/users/{user:username}/edit-password', 'editPassword')->middleware('isAdmin');
     Route::put('/dashboard/users/{user:username}/edit-password', 'updatePassword');
-});
-
-Route::controller(TransaksiController::class)->group(function () {
-    Route::get('/dashboard/transaksis/{transaksi:kode_invoice}/print', 'print');
 });
 
 Route::controller(LoginRegisterController::class)->group(function(){
@@ -47,5 +42,11 @@ Route::controller(PageController::class)->group(function(){
     Route::get('/', 'index');
     Route::get('/dashboard', 'dashboard')->middleware('auth');
 });
+
+Route::resource('/dashboard/outlets', OutletController::class)->except('show')->middleware('isAdmin');
+Route::resource('/dashboard/pakets', PaketController::class)->except('show')->middleware('isAdmin');
+Route::resource('/dashboard/users', UserController::class)->except('show')->middleware('isAdmin'); 
+Route::resource('/dashboard/members', MemberController::class)->except('show')->middleware('auth');
+Route::resource('/dashboard/transaksis', TransaksiController::class)->except('edit', 'update')->middleware('isKasir');
 
 Route::get('/test', [PageController::class, 'test']);

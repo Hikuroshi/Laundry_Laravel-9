@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\TransaksiExport;
 use App\Models\DetailTransaksi;
 use App\Models\Member;
 use App\Models\Paket;
@@ -9,6 +10,7 @@ use App\Models\Transaksi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Str;
+use Maatwebsite\Excel\Facades\Excel;
 
 class TransaksiController extends Controller
 {
@@ -132,6 +134,11 @@ class TransaksiController extends Controller
         Transaksi::where('kode_invoice', $transaksi->kode_invoice)->delete();
         DetailTransaksi::where('kode_invoice', $transaksi->kode_invoice)->delete();
         return redirect('/dashboard/transaksis')->with('success', 'Transaksi berhasil dihapus!');
+    }
+
+    public function export() 
+    {
+        return Excel::download(new TransaksiExport, 'transaksis.xlsx');
     }
 
     public function print(Transaksi $transaksi)
