@@ -53,7 +53,7 @@
                                 </tr>
                                 <tr>
                                     <td>Tanggal Bayar</td>
-                                    <td>{{ $transaksi->tgl_bayar ?? 'Belum bayar'}}</td>
+                                    <td>{{ $transaksi->tgl_bayar ?? 'Belum bayar' }}</td>
                                 </tr>
                                 <tr>
                                     <td>Biaya Tambahan</td>
