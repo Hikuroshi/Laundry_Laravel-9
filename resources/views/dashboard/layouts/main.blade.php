@@ -163,21 +163,23 @@
     </div>
     
     <script>
-        var doc = new jsPDF();
-        var specialElementHandlers = {
-            '#editor': function (element, renderer) {
-                return true;
-            }
-        };
-        
-        $('#cmd').click(function () {
-            doc.fromHTML($('#content').html(), 15, 15, {
-                'width': 170,
-                'elementHandlers': specialElementHandlers
+        function cetakStruk() {
+            html2canvas(document.getElementById('capture'), {
+                allowTaint: true,
+                useCORS: true,
+                scale: 2
+            }).then(canvas => {
+                const base64image = canvas.toDataURL("image/png");
+                var anchor = document.createElement('a');
+                anchor.setAttribute('href', base64image);
+                anchor.setAttribute('download', 'Struk.png');
+                anchor.click();
+                anchor.remove();
             });
-            doc.save('sample-file.pdf');
-        });
+        }
     </script>
+
+    <script src="/assets/js/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="/assets/js/bootstrap.js"></script>
     <script src="/assets/js/app.js"></script>

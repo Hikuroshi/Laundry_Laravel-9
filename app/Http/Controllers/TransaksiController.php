@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Exports\TransaksiExport;
+use App\Exports\TransaksisExport;
 use App\Models\DetailTransaksi;
 use App\Models\Member;
 use App\Models\Paket;
@@ -138,14 +138,21 @@ class TransaksiController extends Controller
 
     public function export() 
     {
-        return Excel::download(new TransaksiExport, 'transaksis.xlsx');
+        return Excel::download(new TransaksisExport, 'transaksis.xlsx');
     }
 
     public function print(Transaksi $transaksi)
     {
+        $harga = $transaksi->detailTransaksi->paket->harga + $transaksi->biaya_tambahan;
+        $diskon = $harga * $transaksi->diskon / 100;
+        $total = $harga - $diskon;
+
         return view('dashboard.transaksi.print', [
             'title' => 'Transaksi ' . $transaksi->member->nama,
             'transaksi' => $transaksi,
+            'harga' => $harga,
+            'diskon' => round($diskon),
+            'total' => round($total)
         ]);
     }
 }

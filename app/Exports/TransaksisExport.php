@@ -8,7 +8,7 @@ use Maatwebsite\Excel\Concerns\WithHeadings;
 use Illuminate\Contracts\View\View;
 use Maatwebsite\Excel\Concerns\FromView;
 
-class TransaksiExport implements FromView
+class TransaksisExport implements FromView
 {
     public function view(): View
     {
