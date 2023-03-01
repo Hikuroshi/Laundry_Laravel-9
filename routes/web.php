@@ -21,7 +21,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::controller(TransaksiController::class)->group(function () {
-    Route::get('/dashboard/transaksis/{transaksi:kode_invoice}/print', 'print');
     Route::get('/dashboard/transaksis/export', 'export')->middleware('isAdmin');
 });
 

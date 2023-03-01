@@ -11,7 +11,7 @@
         </div>
         <div class="col-12 col-md-4 text-end order-md-2 order-first">
             <a href="/dashboard/transaksis/create" class="btn btn-primary">Buat Transaksi</a>
-            <a href="/dashboard/transaksis/export" class="btn btn-primary">Unduh Laporan</a>
+            <a href="/dashboard/transaksis/export-transaksis" class="btn btn-primary">Unduh Laporan</a>
         </div>
     </div>
 </div>

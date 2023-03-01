@@ -177,10 +177,36 @@
                 anchor.remove();
             });
         }
+        
+        function cetakStrukPDF() {
+            html2canvas(document.getElementById('capture'), {
+                allowTaint: true,
+                useCORS: true,
+                dpi: 300,
+                scale: 2
+            }).then(canvas => {
+                var img = canvas.toDataURL("image/jpeg", 1);
+                var doc = new jsPDF('L', 'px', [w, h]);
+                doc.addImage(img, 'JPEG', 0, 0, w, h);
+                doc.save('sample-file.pdf');
+            });
+            // html2canvas(document.getElementById('capture')), {
+            //     useCORS: true,
+            //     allowTaint: true,
+            //     dpi: 300, // Set to 300 DPI
+            //     scale: 3, // Adjusts your resolution
+            //     onrendered: function(canvas) {
+            //         var img = canvas.toDataURL("image/jpeg", 1);
+            //         var doc = new jsPDF('L', 'px', [w, h]);
+            //         doc.addImage(img, 'JPEG', 0, 0, w, h);
+            //         doc.save('sample-file.pdf');
+            //     };
+            // }
+        }
     </script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.4.1/jspdf.debug.js"></script>
+    
     <script src="/assets/js/html2canvas.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="/assets/js/bootstrap.js"></script>
     <script src="/assets/js/app.js"></script>
     
