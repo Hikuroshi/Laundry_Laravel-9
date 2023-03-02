@@ -161,57 +161,18 @@
             </div>
         </div>
     </div>
+
+    <script src="/assets/js/bootstrap.js" async></script>
+    <script src="/assets/js/app.js" async></script>
     
-    <script>
-        function cetakStruk() {
-            html2canvas(document.getElementById('capture'), {
-                allowTaint: true,
-                useCORS: true,
-                scale: 2
-            }).then(canvas => {
-                const base64image = canvas.toDataURL("image/png");
-                var anchor = document.createElement('a');
-                anchor.setAttribute('href', base64image);
-                anchor.setAttribute('download', 'Struk.png');
-                anchor.click();
-                anchor.remove();
-            });
-        }
-        
-        function cetakStrukPDF() {
-            html2canvas(document.getElementById('capture'), {
-                allowTaint: true,
-                useCORS: true,
-                dpi: 300,
-                scale: 2
-            }).then(canvas => {
-                var img = canvas.toDataURL("image/jpeg", 1);
-                var doc = new jsPDF('L', 'px', [w, h]);
-                doc.addImage(img, 'JPEG', 0, 0, w, h);
-                doc.save('sample-file.pdf');
-            });
-            // html2canvas(document.getElementById('capture')), {
-            //     useCORS: true,
-            //     allowTaint: true,
-            //     dpi: 300, // Set to 300 DPI
-            //     scale: 3, // Adjusts your resolution
-            //     onrendered: function(canvas) {
-            //         var img = canvas.toDataURL("image/jpeg", 1);
-            //         var doc = new jsPDF('L', 'px', [w, h]);
-            //         doc.addImage(img, 'JPEG', 0, 0, w, h);
-            //         doc.save('sample-file.pdf');
-            //     };
-            // }
-        }
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.4.1/jspdf.debug.js"></script>
-    
-    <script src="/assets/js/html2canvas.min.js"></script>
-    <script src="/assets/js/bootstrap.js"></script>
-    <script src="/assets/js/app.js"></script>
-    
-    <script src="/assets/extensions/jquery/jquery.min.js"></script>
-    <script src="https://cdn.datatables.net/v/bs5/dt-1.12.1/datatables.min.js"></script>
-    <script src="/assets/js/pages/datatables.js"></script>
+    <script src="/assets/extensions/jquery/jquery.min.js" async></script>
+    <script src="/assets/js/datatables.min.js" async></script>
+    <script src="/assets/js/pages/datatables.js" async></script>
+
+    @if (request()->routeIs('transaksis.show'))
+    <script src="/assets/js/scripts.js" async></script>
+    <script src="/assets/js/jspdf.debug.js" async></script>
+    <script src="/assets/js/html2canvas.min.js" async></script>
+    @endif
 </body>
 </html>

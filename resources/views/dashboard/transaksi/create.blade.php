@@ -92,6 +92,7 @@
                 <div class="form-group mb-3">
                     <label for="qty">QTY <span class="text-danger">*</span></label>
                     <input name="qty" type="number" id="qty" class="form-control @error('qty') is-invalid @enderror" value="{{ old('qty') }}" placeholder="Masukan qty...">
+                    <span class="input-group-text">Kg</span>
                     @error('qty')
                     <div class="invalid-feedback">
                         {{ $message }}

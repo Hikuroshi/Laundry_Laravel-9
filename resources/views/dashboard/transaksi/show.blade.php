@@ -20,7 +20,7 @@
         <div class="card-content">
             <div class="card-body">
                 <div class="row align-items-center">
-                    <div class="col-12 col-lg-6">
+                    <div class="col-12 col-xl-6">
                         <div class="table-responsive">
                             <table class="table">
                                 <tr>
@@ -28,36 +28,48 @@
                                     <td>{{ $transaksi->outlet->nama }}</td>
                                 </tr>
                                 <tr>
-                                    <td>Kode Invoice</td>
-                                    <td>{{ $transaksi->kode_invoice }}</td>
+                                    <td>Alamat Outlet</td>
+                                    <td>{{ $transaksi->outlet->alamat }}</td>
                                 </tr>
                                 <tr>
-                                    <td>Nama Pelanggan</td>
-                                    <td>{{ $transaksi->member->nama }}</td>
-                                </tr>
-                                <tr>
-                                    <td>Kasir</td>
-                                    <td>{{ $transaksi->user->nama }}</td>
+                                    <td>No Telepon Outlet</td>
+                                    <td>{{ $transaksi->outlet->telepon }}</td>
                                 </tr>
                                 <tr>
                                     <td>Paket</td>
                                     <td>{{ $transaksi->detailTransaksi->paket->nama }}</td>
                                 </tr>
                                 <tr>
-                                    <td>Tanggal</td>
-                                    <td>{{ $transaksi->tgl }}</td>
+                                    <td>jenis</td>
+                                    <td>{{ $transaksi->detailTransaksi->paket->jenis }}</td>
                                 </tr>
                                 <tr>
-                                    <td>Batas Waktu</td>
-                                    <td>{{ $transaksi->batas_waktu }}</td>
+                                    <td>Nama Pelanggan</td>
+                                    <td>{{ $transaksi->member->nama }}</td>
                                 </tr>
                                 <tr>
-                                    <td>Tanggal Bayar</td>
-                                    <td>{{ $transaksi->tgl_bayar ?? 'Belum bayar' }}</td>
+                                    <td>No Telepon Pelanggan</td>
+                                    <td>{{ $transaksi->member->telepon }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Alamat Pelanggan</td>
+                                    <td>{{ $transaksi->member->alamat }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Jenis Kelamin Pelanggan</td>
+                                    <td>{{ $transaksi->member->jenis_kelamin }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Kasir</td>
+                                    <td>{{ $transaksi->user->nama }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Kode Invoice</td>
+                                    <td>{{ $transaksi->kode_invoice }}</td>
                                 </tr>
                                 <tr>
                                     <td>QTY</td>
-                                    <td>{{ $transaksi->detailTransaksi->qty }}%</td>
+                                    <td>{{ $transaksi->detailTransaksi->qty }} Kg</td>
                                 </tr>
                                 <tr>
                                     <td>Diskon</td>
@@ -70,6 +82,18 @@
                                 <tr>
                                     <td>Status Pembayaran</td>
                                     <td>{{ $transaksi->dibayar }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Tanggal</td>
+                                    <td>{{ $transaksi->tgl }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Batas Waktu</td>
+                                    <td>{{ $transaksi->batas_waktu }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Tanggal Bayar</td>
+                                    <td>{{ $transaksi->tgl_bayar ?? 'Belum bayar'}}</td>
                                 </tr>
                                 <tr>
                                     <td>Harga Paket</td>
@@ -90,8 +114,8 @@
                             </table>
                         </div>
                     </div>
-                    <div class="m-auto" style="width: 500px">
-                        <div class="bg-white rounded-4 text-dark">
+                    <div class="col-12 col-xl-6">
+                        <div class="bg-white rounded-4 text-dark m-auto my-5" style="width: 500px">
                             <div id="capture" class="p-3">
                                 <div class="d-flex justify-content-center align-items-center py-3">
                                     <img class="img-fluid me-1" src="/img/laundry.png" alt="Logo" width="40"/>
@@ -103,7 +127,6 @@
                                             <td>Nama Outlet</td>
                                             <td>: {{ $transaksi->outlet->nama }}</td>
                                         </tr>
-                                        <tr>
                                             <td>Paket</td>
                                             <td>: {{ $transaksi->detailTransaksi->paket->nama }}</td>
                                         </tr>
@@ -121,7 +144,7 @@
                                         </tr>
                                         <tr>
                                             <td>QTY</td>
-                                            <td>: {{ $transaksi->detailTransaksi->qty }}%</td>
+                                            <td>: {{ $transaksi->detailTransaksi->qty }}Kg</td>
                                         </tr>
                                         <tr>
                                             <td>Tanggal</td>
