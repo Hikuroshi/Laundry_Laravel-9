@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\LoginRegisterController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\OutletController;
 use App\Http\Controllers\PageController;
@@ -29,12 +29,10 @@ Route::controller(UserController::class)->group(function () {
     Route::put('/dashboard/users/{user:username}/edit-password', 'updatePassword');
 });
 
-Route::controller(LoginRegisterController::class)->group(function(){
+Route::controller(LoginController::class)->group(function(){
     Route::get('/login', 'login')->name('login')->middleware('guest');
     Route::post('/login', 'authenticate');
     Route::get('/logout', 'logout')->middleware('auth');
-    Route::get('/register', 'register')->middleware('isKasir');
-    Route::post('/register', 'registration');
 });
 
 Route::controller(PageController::class)->group(function(){

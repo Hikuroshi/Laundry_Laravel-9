@@ -27,8 +27,8 @@ return new class extends Migration
             $table->integer('biaya_tambahan');
             $table->double('diskon');
             $table->integer('pajak');
-            $table->enum('status', ['baru', 'proses', 'selesai', 'diambil'])->default('baru');
-            $table->enum('dibayar', ['telah_bayar', 'belum_bayar'])->default('belum_bayar');
+            $table->enum('status', ['Baru', 'Proses', 'Selesai', 'Diambil'])->default('Baru');
+            $table->enum('dibayar', ['Telah bayar', 'Belum bayar'])->default('Belum bayar');
             $table->foreignIdFor(User::class)->index();
             $table->timestamps();
         });

@@ -41,7 +41,7 @@
                 
                 <div class="form-group mb-3">
                     <label for="telepon">Nomor Telepon <span class="text-danger">*</span></label>
-                    <input name="telepon" type="number" id="telepon" class="form-control @error('telepon') is-invalid @enderror" value="{{ old('telepon', $outlet->telepon) }}" placeholder="Masukan nomor telepon...">
+                    <input name="telepon" type="number" id="telepon" class="form-control @error('telepon') is-invalid @enderror" value="{{ old('telepon', $outlet->telepon) }}" placeholder="Masukan nomor telepon outlet...">
                     @error('telepon')
                     <div class="invalid-feedback">
                         {{ $message }}

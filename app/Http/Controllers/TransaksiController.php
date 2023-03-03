@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Exports\TransaksisExport;
-use App\Exports\TransaksiExport;
 use App\Models\DetailTransaksi;
 use App\Models\Member;
 use App\Models\Paket;
@@ -36,8 +35,8 @@ class TransaksiController extends Controller
      */
     public function create()
     {
-        $all_status = ['baru', 'proses', 'selesai', 'diambil'];
-        $all_dibayar = ['telah_bayar', 'belum_bayar'];
+        $all_status = ['Baru', 'Proses', 'Selesai', 'Diambil'];
+        $all_dibayar = ['Telah bayar', 'Belum bayar'];
 
         return view('dashboard.transaksi.create', [
             'title' => 'Tambah Transaksi',
@@ -95,9 +94,9 @@ class TransaksiController extends Controller
      */
     public function show(Transaksi $transaksi)
     {
-        $harga = $transaksi->detailTransaksi->paket->harga + $transaksi->biaya_tambahan;
+        $harga = $transaksi->detailTransaksi->paket->harga * round($transaksi->detailTransaksi->qty);
         $diskon = $harga * $transaksi->diskon / 100;
-        $total = $harga - $diskon;
+        $total = $harga - $diskon + $transaksi->biaya_tambahan + $transaksi->pajak;
 
         return view('dashboard.transaksi.show', [
             'title' => 'Transaksi ' . $transaksi->member->nama,

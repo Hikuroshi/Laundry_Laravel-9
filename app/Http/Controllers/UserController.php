@@ -30,7 +30,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        $all_roles = ['admin', 'kasir', 'owner'];
+        $all_roles = ['Admin', 'Kasir', 'Owner'];
 
         return view('dashboard.user.create', [
             'title' => 'Tambah User',
@@ -50,7 +50,7 @@ class UserController extends Controller
         $validatedData = $request->validate([
             'nama' => 'required|max:100',
             'username' => 'required|min:3|max:30|alpha_dash|unique:users',
-            'email' => 'required|email:dns|unique:users',
+            'email' => 'required|email|unique:users',
             'password' => ['required', 'confirmed', Password::min(5)->letters()->numbers()],
             'outlet_id' => 'required',
             'roles' => 'required',
@@ -82,7 +82,7 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        $all_roles = ['admin', 'kasir', 'owner'];
+        $all_roles = ['Admin', 'Kasir', 'Owner'];
 
         return view('dashboard.user.edit', [
             'title' => 'Tambah User',
@@ -111,7 +111,7 @@ class UserController extends Controller
             $rules['username'] = 'required|min:3|max:30|alpha_dash|unique:users';
         }
         if ($request->email != $user->email) {
-            $rules['email'] = 'required|email:dns|unique:users';
+            $rules['email'] = 'required|email|unique:users';
         }
 
         $validatedData = $request->validate($rules);

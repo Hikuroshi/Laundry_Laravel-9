@@ -29,12 +29,12 @@ class PaketController extends Controller
      */
     public function create()
     {
-        $jenis_paket = ['kiloan', 'selimut', 'bed_cover', 'kaos', 'lain'];
+        $all_jenis = ['Kiloan', 'Selimut', 'Bed Cover', 'Kaos', 'Lain-lain'];
 
         return view('dashboard.paket.create', [
             'title' => 'Tambah Paket Cucian',
             'outlets' => Outlet::all(),
-            'jenis_paket' => $jenis_paket
+            'all_jenis' => $all_jenis
         ]);
     }
 
@@ -82,9 +82,13 @@ class PaketController extends Controller
      */
     public function edit(Paket $paket)
     {
+        $all_jenis = ['Kiloan', 'Selimut', 'Bed Cover', 'Kaos', 'Lain-lain'];
+
         return view('dashboard.paket.edit', [
             'title' => 'Edit Paket Cucian',
-            'paket' => $paket
+            'paket' => $paket,
+            'outlets' => Outlet::all(),
+            'all_jenis' => $all_jenis
         ]);
     }
 

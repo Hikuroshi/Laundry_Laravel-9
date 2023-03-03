@@ -17,7 +17,7 @@ class isKasir
     public function handle(Request $request, Closure $next)
     {
         if (auth()->check()) {
-            if (auth()->user()->roles == 'kasir' || auth()->user()->roles == 'admin') {
+            if (auth()->user()->roles == 'Kasir' || auth()->user()->roles == 'Admin') {
                 return $next($request);
             }
             abort(403);

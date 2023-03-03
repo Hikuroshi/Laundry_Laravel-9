@@ -144,7 +144,7 @@
                                         </tr>
                                         <tr>
                                             <td>QTY</td>
-                                            <td>: {{ $transaksi->detailTransaksi->qty }}Kg</td>
+                                            <td>: {{ $transaksi->detailTransaksi->qty }} Kg</td>
                                         </tr>
                                         <tr>
                                             <td>Tanggal</td>
@@ -160,7 +160,7 @@
                                         </tr>
                                         <tr style="border-top: 1px dashed black">
                                             <td>Subtotal Paket</td>
-                                            <td>: Rp.{{ number_format($transaksi->detailTransaksi->paket->harga, 2) }}</td>
+                                            <td>: Rp.{{ number_format($transaksi->detailTransaksi->paket->harga, 2) }} <span class="ms-3">x{{ $transaksi->detailTransaksi->qty }}</span></td>
                                         </tr>
                                         <tr>
                                             <td>Subtotal Diskon</td>
@@ -176,9 +176,13 @@
                                         </tr>
                                         <tr>
                                             <td class="fw-bold">Total Pesanan</td>
-                                            <td class="fw-bold">: Rp.{{ number_format($harga, 2) }}</td>
+                                            <td class="fw-bold">: Rp.{{ number_format($total, 2) }}</td>
                                         </tr>
                                     </table>
+                                </div>
+                                <div class="text-center">
+                                    <small class="d-block">Terimakasih sudah menggunakan jasa laundry kami^^</small>
+                                    <small class="d-block">{{ $transaksi->outlet->alamat }}: {{ $transaksi->outlet->telepon }}</small>
                                 </div>
                             </div>
                         </div>

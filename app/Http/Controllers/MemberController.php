@@ -32,7 +32,7 @@ class MemberController extends Controller
     {
         $this->authorize('create', Member::class);
 
-        $all_jenis_kelamin = ['L', 'P'];
+        $all_jenis_kelamin = ['Laki-laki', 'Perempuan'];
 
         return view('dashboard.member.create', [
             'title' => 'Tambah Member',
@@ -86,9 +86,9 @@ class MemberController extends Controller
      */
     public function edit(Member $member)
     {
-        $this->authorize('update', Member::class);
+        $this->authorize('update', $member);
 
-        $all_jenis_kelamin = ['L', 'P'];
+        $all_jenis_kelamin = ['Laki-laki', 'Perempuan'];
 
         return view('dashboard.member.edit', [
             'title' => 'Edit Member',
@@ -106,7 +106,7 @@ class MemberController extends Controller
      */
     public function update(Request $request, Member $member)
     {
-        $this->authorize('update', Member::class);
+        $this->authorize('update', $member);
 
         $rules = [
             'nama' => 'required|max:100',

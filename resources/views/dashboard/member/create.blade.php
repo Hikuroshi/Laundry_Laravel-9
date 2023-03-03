@@ -19,7 +19,7 @@
                 @csrf
                 <div class="form-group mb-3">
                     <label for="nama">Nama Pelanggan <span class="text-danger">*</span></label>
-                    <input name="nama" type="text" id="nama" class="form-control @error('nama') is-invalid @enderror" value="{{ old('nama') }}" placeholder="Masukan nama outlet..." autofocus>
+                    <input name="nama" type="text" id="nama" class="form-control @error('nama') is-invalid @enderror" value="{{ old('nama') }}" placeholder="Masukan nama pelanggan..." autofocus>
                     @error('nama')
                     <div class="invalid-feedback">
                         {{ $message }}
@@ -29,7 +29,7 @@
                 
                 <div class="form-group mb-3">
                     <label for="alamat">Alamat <span class="text-danger">*</span></label>
-                    <textarea name="alamat" class="form-control @error('alamat') is-invalid @enderror" rows="3" placeholder="Masukan alamat outlet...">{{ old('alamat') }}</textarea>
+                    <textarea name="alamat" class="form-control @error('alamat') is-invalid @enderror" rows="3" placeholder="Masukan alamat pelanggan...">{{ old('alamat') }}</textarea>
                     @error('alamat')
                     <div class="invalid-feedback">
                         {{ $message }}
@@ -56,7 +56,7 @@
                 
                 <div class="form-group mb-3">
                     <label for="telepon">Nomor Telepon <span class="text-danger">*</span></label>
-                    <input name="telepon" type="number" id="telepon" class="form-control @error('telepon') is-invalid @enderror" value="{{ old('telepon') }}" placeholder="Masukan nomor telepon...">
+                    <input name="telepon" type="number" id="telepon" class="form-control @error('telepon') is-invalid @enderror" value="{{ old('telepon') }}" placeholder="Masukan nomor telepon pelanggan...">
                     @error('telepon')
                     <div class="invalid-feedback">
                         {{ $message }}

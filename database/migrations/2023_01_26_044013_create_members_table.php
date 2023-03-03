@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('nama', 100);
             $table->string('slug', 100)->unique();
             $table->text('alamat');
-            $table->enum('jenis_kelamin', ['L', 'P']);
+            $table->enum('jenis_kelamin', ['Laki-laki', 'Perempuan']);
             $table->string('telepon', 15);
             $table->timestamps();
         });

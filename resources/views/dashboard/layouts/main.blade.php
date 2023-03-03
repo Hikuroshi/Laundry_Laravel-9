@@ -46,7 +46,7 @@
                             </a>
                         </li>
                         
-                        @can('admin')
+                        @can('Admin')
                         <li class="sidebar-item {{ request()->is('dashboard/outlets*') ? 'active' : '' }}">
                             <a href="/dashboard/outlets" class="sidebar-link">
                                 <i class="bi bi-grid-fill"></i>
@@ -75,7 +75,7 @@
                             </a>
                         </li>
                         @endcan
-                        @can('kasir')
+                        @can('Kasir')
                         <li class="sidebar-item {{ request()->is('dashboard/members/create') ? 'active' : '' }}">
                             <a href="/dashboard/members/create" class="sidebar-link">
                                 <i class="bi bi-grid-fill"></i>
@@ -155,12 +155,15 @@
             <footer>
                 <div class="footer clearfix mb-0 text-muted">
                     <div class="text-center">
-                        <p>2023 &copy; Hikuroshi</p>
+                        <p>2023 &copy; Hikmah Maulana | SMKN 1 Kragilan</p>
                     </div>
                 </footer>
             </div>
         </div>
     </div>
+    <script>
+        var kode_invoice = {{ Js::from($transaksi->kode_invoice) }};
+    </script>
 
     <script src="/assets/js/bootstrap.js" async></script>
     <script src="/assets/js/app.js" async></script>
@@ -170,7 +173,7 @@
     <script src="/assets/js/pages/datatables.js" async></script>
 
     @if (request()->routeIs('transaksis.show'))
-    <script src="/assets/js/scripts.js" async></script>
+    <script src="/assets/js/export.js" async></script>
     <script src="/assets/js/jspdf.debug.js" async></script>
     <script src="/assets/js/html2canvas.min.js" async></script>
     @endif

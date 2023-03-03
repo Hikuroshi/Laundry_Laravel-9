@@ -49,7 +49,7 @@
                     <label for="jenis" class="form-label">Jenis <span class="text-danger">*</span></label>
                     <select name="jenis" id="jenis" class="form-control @error('jenis') is-invalid @enderror">
                         <option value="">Pilih Jenis</option>
-                        @foreach ($jenis_paket as $jenis)
+                        @foreach ($all_jenis as $jenis)
                         <option value="{{ $jenis }}" @selected(old('jenis') == $jenis)>
                             {{ $jenis }}
                         </option>
@@ -63,8 +63,8 @@
                 </div>
                 
                 <div class="form-group mb-3">
-                    <label for="harga">Nomor Harga <span class="text-danger">*</span></label>
-                    <input name="harga" type="number" id="harga" class="form-control @error('harga') is-invalid @enderror" value="{{ old('harga') }}" placeholder="Masukan harga...">
+                    <label for="harga">Harga <span class="text-danger">*</span></label>
+                    <input name="harga" type="number" id="harga" class="form-control @error('harga') is-invalid @enderror" value="{{ old('harga') }}" placeholder="Masukan harga paket...">
                     @error('harga')
                     <div class="invalid-feedback">
                         {{ $message }}

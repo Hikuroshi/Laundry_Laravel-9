@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('nama', 100);
             $table->string('slug', 100)->unique();
             $table->foreignIdFor(Outlet::class)->index();
-            $table->enum('jenis', ['kiloan', 'selimut', 'bed_cover', 'kaos', 'lain']);
+            $table->enum('jenis', ['Kiloan', 'Selimut', 'Bed Cover', 'Kaos', 'Lain-lain']);
             $table->integer('harga');
             $table->timestamps();
         });

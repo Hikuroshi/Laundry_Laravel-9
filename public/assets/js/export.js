@@ -7,7 +7,7 @@ function cetakStruk() {
         const base64image = canvas.toDataURL("image/png");
         var anchor = document.createElement('a');
         anchor.setAttribute('href', base64image);
-        anchor.setAttribute('download', 'Struk-{{ $transaksi->kode_invoice }}.png');
+        anchor.setAttribute('download', 'Struk-' + kode_invoice + '.png');
         anchor.click();
         anchor.remove();
     });
@@ -23,6 +23,6 @@ function cetakStrukPDF() {
         var width = pdf.internal.pageSize.getWidth();
         var height = pdf.internal.pageSize.getHeight();
         pdf.addImage(canvas.toDataURL("image/jpeg"), "jpeg", 0, 0, width, height);
-        pdf.save('Struk-{{ $transaksi->kode_invoice }}.pdf');
+        pdf.save('Struk-' + kode_invoice + '.pdf');
     });
 }

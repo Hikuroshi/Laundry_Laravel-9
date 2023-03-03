@@ -17,7 +17,7 @@ class isOwner
     public function handle(Request $request, Closure $next)
     {
         if (auth()->check()) {
-            if (auth()->user()->roles == 'owner' || auth()->user()->roles == 'kasir' || auth()->user()->roles == 'admin') {
+            if (auth()->user()->roles == 'Owner' || auth()->user()->roles == 'Kasir' || auth()->user()->roles == 'Admin') {
                 return $next($request);
             }
             abort(403);

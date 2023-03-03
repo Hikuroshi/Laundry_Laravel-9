@@ -19,7 +19,7 @@ class MemberPolicy
      */
     public function viewAny(User $user)
     {
-        return $user->roles === 'admin' ? Response::allow() : Response::deny('Kamu tidak memiliki izin');
+        return $user->roles === 'Admin' ? Response::allow() : Response::deny('Kamu tidak memiliki izin');
     }
 
     /**
@@ -31,7 +31,7 @@ class MemberPolicy
      */
     public function view(User $user, Member $member)
     {
-        return $user->roles === 'admin' ? Response::allow() : Response::deny('Kamu tidak memiliki izin');
+        return $user->roles === 'Admin' ? Response::allow() : Response::deny('Kamu tidak memiliki izin');
     }
 
     /**
@@ -42,7 +42,7 @@ class MemberPolicy
      */
     public function create(User $user)
     {
-        return $user->roles === 'admin' || $user->roles === 'kasir' ? Response::allow() : Response::deny('Kamu tidak memiliki izin');
+        return $user->roles === 'Admin' || $user->roles === 'kasir' ? Response::allow() : Response::deny('Kamu tidak memiliki izin');
     }
 
     /**
@@ -54,7 +54,7 @@ class MemberPolicy
      */
     public function update(User $user, Member $member)
     {
-        return $user->roles === 'admin' ? Response::allow() : Response::deny('Kamu tidak memiliki izin');
+        return $user->roles === 'Admin' ? Response::allow() : Response::deny('Kamu tidak memiliki izin');
     }
 
     /**
@@ -66,7 +66,7 @@ class MemberPolicy
      */
     public function delete(User $user, Member $member)
     {
-        return $user->roles === 'admin' ? Response::allow() : Response::deny('Kamu tidak memiliki izin');
+        return $user->roles === 'Admin' ? Response::allow() : Response::deny('Kamu tidak memiliki izin');
     }
 
     /**
@@ -78,7 +78,7 @@ class MemberPolicy
      */
     public function restore(User $user, Member $member)
     {
-        return $user->roles === 'admin' ? Response::allow() : Response::deny('Kamu tidak memiliki izin');
+        return $user->roles === 'Admin' ? Response::allow() : Response::deny('Kamu tidak memiliki izin');
     }
 
     /**
@@ -90,6 +90,6 @@ class MemberPolicy
      */
     public function forceDelete(User $user, Member $member)
     {
-        return $user->roles === 'admin' ? Response::allow() : Response::deny('Kamu tidak memiliki izin');
+        return $user->roles === 'Admin' ? Response::allow() : Response::deny('Kamu tidak memiliki izin');
     }
 }
