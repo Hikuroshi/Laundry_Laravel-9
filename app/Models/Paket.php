@@ -11,6 +11,7 @@ class Paket extends Model
     use HasFactory, Sluggable;
 
     protected $guarded = ['id'];
+    protected $with = ['outlet'];
 
     public function detailTransaksi()
     {

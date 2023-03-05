@@ -70,7 +70,7 @@
                 
                 <div class="form-group mb-4">
                     <label for="outlet" class="form-label">Outlet <span class="text-danger">*</span></label>
-                    <select name="outlet_id" id="outlet" class="form-control @error('outlet_id') is-invalid @enderror">
+                    <select name="outlet_id" id="outlet" class="form-select @error('outlet_id') is-invalid @enderror">
                         <option value="">Pilih Outlet</option>
                         @foreach ($outlets as $outlet)
                         <option value="{{ $outlet->id }}" @selected(old('outlet_id') == $outlet->id)>
@@ -87,7 +87,7 @@
                 
                 <div class="form-group mb-4">
                     <label for="roles" class="form-label">Role <span class="text-danger">*</span></label>
-                    <select name="roles" id="roles" class="form-control @error('roles') is-invalid @enderror">
+                    <select name="roles" id="roles" class="form-select @error('roles') is-invalid @enderror">
                         <option value="">Pilih Role</option>
                         @foreach ($all_roles as $roles)
                         <option value="{{ $roles }}" @selected(old('roles') == $roles)>

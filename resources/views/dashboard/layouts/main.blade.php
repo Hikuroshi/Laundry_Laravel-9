@@ -82,14 +82,13 @@
                                 <span>Registrasi Pelanggan</span>
                             </a>
                         </li>
-                        <li class="sidebar-item {{ request()->is('dashboard/transaksis') ? 'active' : '' }}">
+                        <li class="sidebar-item {{ request()->is('dashboard/transaksis*') ? 'active' : '' }}">
                             <a href="/dashboard/transaksis" class="sidebar-link">
                                 <i class="bi bi-grid-fill"></i>
                                 <span>Transaksi</span>
                             </a>
                         </li>
                         @endcan
-                        
                     </ul>
                 </div>
             </div>
@@ -161,21 +160,23 @@
             </div>
         </div>
     </div>
-    <script>
-        var kode_invoice = {{ Js::from($transaksi->kode_invoice) }};
-    </script>
-
+    
     <script src="/assets/js/bootstrap.js" async></script>
     <script src="/assets/js/app.js" async></script>
+    <script src="/assets/js/scripts.js" async></script>
     
     <script src="/assets/extensions/jquery/jquery.min.js" async></script>
     <script src="/assets/js/datatables.min.js" async></script>
     <script src="/assets/js/pages/datatables.js" async></script>
-
+    
     @if (request()->routeIs('transaksis.show'))
-    <script src="/assets/js/export.js" async></script>
     <script src="/assets/js/jspdf.debug.js" async></script>
     <script src="/assets/js/html2canvas.min.js" async></script>
+    @endif
+    
+    @if (request()->routeIs('dashboard'))
+    <script src="assets/extensions/apexcharts/apexcharts.min.js"></script>
+    <script src="assets/js/pages/dashboard.js"></script>
     @endif
 </body>
 </html>

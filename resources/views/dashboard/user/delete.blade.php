@@ -1,4 +1,4 @@
-<div class="modal fade text-left" id="hapus-{{ $user->username }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel160" aria-hidden="true">
+<div class="modal fade text-left" id="hapus-{{ $user->username }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel160" aria-hidden="true" style="white-space: normal">
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
         <div class="modal-content">
             <div class="modal-header bg-danger">

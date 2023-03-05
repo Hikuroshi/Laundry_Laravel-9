@@ -35,14 +35,12 @@ class TransaksiController extends Controller
      */
     public function create()
     {
-        $all_status = ['Baru', 'Proses', 'Selesai', 'Diambil'];
         $all_dibayar = ['Telah bayar', 'Belum bayar'];
 
         return view('dashboard.transaksi.create', [
             'title' => 'Tambah Transaksi',
             'members' => Member::all(),
             'pakets' => Paket::all(),
-            'all_status' => $all_status,
             'all_dibayar' => $all_dibayar,
         ]);
     }
@@ -69,7 +67,7 @@ class TransaksiController extends Controller
         $validateTransaksi['pajak'] = 1000;
         $validateTransaksi['user_id'] = auth()->user()->id;
 
-        if ($request->dibayar == 'telah_bayar') {
+        if ($request->dibayar == 'Telah Bayar') {
             $validateTransaksi['tgl_bayar'] = now();
         }
 
@@ -94,6 +92,8 @@ class TransaksiController extends Controller
      */
     public function show(Transaksi $transaksi)
     {
+        $all_status = ['Baru', 'Proses', 'Selesai', 'Diambil'];
+
         $harga = $transaksi->detailTransaksi->paket->harga * round($transaksi->detailTransaksi->qty);
         $diskon = $harga * $transaksi->diskon / 100;
         $total = $harga - $diskon + $transaksi->biaya_tambahan + $transaksi->pajak;
@@ -103,7 +103,9 @@ class TransaksiController extends Controller
             'transaksi' => $transaksi,
             'harga' => $harga,
             'diskon' => round($diskon),
-            'total' => round($total)
+            'total' => round($total),
+            'pakets' => Paket::all(),
+            'all_status' => $all_status
         ]);
     }
 
@@ -127,7 +129,24 @@ class TransaksiController extends Controller
      */
     public function update(Request $request, Transaksi $transaksi)
     {
-        //
+        $validateTransaksi = $request->validate([
+            'biaya_tambahan' => 'required|max:10',
+            'diskon' => 'required|max:2',
+        ]);
+
+        if ($request->dibayar == 'Telah bayar') {
+            $validateTransaksi['tgl_bayar'] = now();
+        }
+
+        $validateDetail = $request->validate([
+            'paket_id' => 'required',
+            'qty' => 'required',
+            'keterangan' => 'required'
+        ]);
+
+        Transaksi::where('kode_invoice', $transaksi->kode_invoice)->update($validateTransaksi);
+        DetailTransaksi::where('kode_invoice', $transaksi->kode_invoice)->update($validateDetail);    
+        return redirect('/dashboard/transaksis/' . $transaksi->kode_invoice)->with('success', 'Transaksi berhasil diperbarui!');
     }
 
     /**
@@ -138,12 +157,14 @@ class TransaksiController extends Controller
      */
     public function destroy(Transaksi $transaksi)
     {
+        $this->authorize('delete', $transaksi);
+
         Transaksi::where('kode_invoice', $transaksi->kode_invoice)->delete();
         DetailTransaksi::where('kode_invoice', $transaksi->kode_invoice)->delete();
         return redirect('/dashboard/transaksis')->with('success', 'Transaksi berhasil dihapus!');
     }
 
-    public function export() 
+    public function export(Request $request) 
     {
         return Excel::download(new TransaksisExport, 'transaksis.xlsx');
     }

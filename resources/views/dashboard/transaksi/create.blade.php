@@ -20,7 +20,7 @@
                 
                 <div class="form-group mb-4">
                     <label for="member" class="form-label">Member <span class="text-danger">*</span></label>
-                    <select name="member_id" id="member" class="form-control @error('member_id') is-invalid @enderror">
+                    <select name="member_id" id="member" class="form-select @error('member_id') is-invalid @enderror">
                         <option value="">Pilih Member</option>
                         @foreach ($members as $member)
                         <option value="{{ $member->id }}" @selected(old('member_id') == $member->id)>
@@ -37,7 +37,7 @@
                 
                 <div class="form-group mb-4">
                     <label for="paket" class="form-label">Paket <span class="text-danger">*</span></label>
-                    <select name="paket_id" id="paket" class="form-control @error('paket_id') is-invalid @enderror">
+                    <select name="paket_id" id="paket" class="form-select @error('paket_id') is-invalid @enderror">
                         <option value="">Pilih Paket</option>
                         @foreach ($pakets as $paket)
                         <option value="{{ $paket->id }}" @selected(old('paket_id') == $paket->id)>
@@ -90,7 +90,7 @@
                 
                 <div class="form-group mb-4">
                     <label for="dibayar" class="form-label">Status pembayaran <span class="text-danger">*</span></label>
-                    <select name="dibayar" id="dibayar" class="form-control @error('dibayar') is-invalid @enderror">
+                    <select name="dibayar" id="dibayar" class="form-select @error('dibayar') is-invalid @enderror">
                         <option value="">Sudah / Belum</option>
                         @foreach ($all_dibayar as $dibayar)
                         <option value="{{ $dibayar }}" @selected(old('dibayar') == $dibayar)>

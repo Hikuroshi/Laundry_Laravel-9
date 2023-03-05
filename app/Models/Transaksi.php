@@ -10,6 +10,7 @@ class Transaksi extends Model
     use HasFactory;
 
     protected $guarded = ['id'];
+    protected $with = ['user', 'member', 'outlet'];
 
     public function user()
     {

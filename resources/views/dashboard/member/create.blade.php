@@ -39,7 +39,7 @@
 
                 <div class="form-group mb-4">
                     <label for="jenis_kelamin" class="form-label">Jenis kelamin <span class="text-danger">*</span></label>
-                    <select name="jenis_kelamin" id="jenis_kelamin" class="form-control @error('jenis_kelamin') is-invalid @enderror">
+                    <select name="jenis_kelamin" id="jenis_kelamin" class="form-select @error('jenis_kelamin') is-invalid @enderror">
                         <option value="">Pilih Jenis kelamin</option>
                         @foreach ($all_jenis_kelamin as $jenis_kelamin)
                         <option value="{{ $jenis_kelamin }}" @selected(old('jenis_kelamin') == $jenis_kelamin)>

@@ -2,15 +2,17 @@
 
 @section('container')
 <div class="page-title">
-    <div class="row align-items-center">
-        <div class="col-12 col-md-6 order-md-1 order-last">
+    <div class="row align-items-center mb-3 mb-sm-0">
+        <div class="col-12 col-md-6">
             <h3>Dashboard User</h3>
             <p class="text-subtitle text-muted">
                 Disini kamu bisa menambah, mengubah, dan menghapus data User.
             </p>
         </div>
-        <div class="col-12 col-md-6 text-end order-md-2 order-first">
-            <a href="/dashboard/users/create" class="btn btn-primary">Tambah User</a>
+        <div class="col-12 col-md-6 text-end">
+            <div class="d-sm-block d-grid gap-2">
+                <a href="/dashboard/users/create" class="btn btn-primary btn-sm">Tambah User</a>
+            </div>
         </div>
     </div>
 </div>
@@ -19,7 +21,7 @@
     <div class="card">
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table" id="table1">
+                <table class="table" id="table1" style="white-space: nowrap">
                     <thead>
                         <tr>
                             <th>No</th>

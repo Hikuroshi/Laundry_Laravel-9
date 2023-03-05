@@ -64,7 +64,7 @@ class MemberController extends Controller
         $validatedData['slug'] = SlugService::createSlug(Member::class, 'slug', $request->nama);
 
         Member::create($validatedData);
-        return redirect('/dashboard/members')->with('success', 'Member berhasil ditambahkan!');
+        return redirect('/dashboard/members')->with('success', 'Pelanggan berhasil ditambahkan!');
     }
 
     /**
@@ -126,7 +126,7 @@ class MemberController extends Controller
         $validatedData['slug'] = SlugService::createSlug(Member::class, 'slug', $request->nama);
 
         Member::where('id', $member->id)->update($validatedData);
-        return redirect('/dashboard/members')->with('success', 'Member berhasil diperbarui!');
+        return redirect('/dashboard/members')->with('success', 'Pelanggan berhasil diperbarui!');
     }
 
     /**
@@ -137,9 +137,9 @@ class MemberController extends Controller
      */
     public function destroy(Member $member)
     {
-        $this->authorize('delete', Member::class);
+        $this->authorize('delete', $member);
 
         Member::destroy($member->id);
-        return redirect('/dashboard/members')->with('success', 'Member berhasil dihapus!');
+        return redirect('/dashboard/members')->with('success', 'Pelanggan berhasil dihapus!');
     }
 }
