@@ -38,6 +38,8 @@ Route::controller(LoginController::class)->group(function(){
 Route::controller(PageController::class)->group(function(){
     Route::get('/', 'index');
     Route::get('/dashboard', 'dashboard')->name('dashboard')->middleware('auth');
+    Route::get('/outlets', 'outlet');
+    Route::get('/pakets', 'paket');
 });
 
 Route::resource('/dashboard/outlets', OutletController::class)->except('show')->middleware('isAdmin');

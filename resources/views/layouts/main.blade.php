@@ -100,7 +100,7 @@
                 <div class="container mt-5">
                     <div class="footer clearfix mb-0 text-muted">
                         <div class="text-center">
-                            <p>2023 &copy; Hikuroshi</p>
+                            <p>2023 &copy; Hikmah Maulana | SMKN 1 Kragilan</p>
                         </div>
                     </div>
                 </div>

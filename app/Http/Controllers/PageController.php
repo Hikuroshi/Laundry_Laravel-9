@@ -31,6 +31,26 @@ class PageController extends Controller
         ]);
     }
 
+    public function outlet()
+    {
+        return view('outlet.index', [
+            'title' => 'Semua Outlet',
+            'outlets' => Outlet::latest()->filter(request(['search']))->paginate(10)->withQueryString(),
+        ]);
+    }
+
+    public function paket()
+    {
+        $all_jenis = ['Kiloan', 'Selimut', 'Bed Cover', 'Kaos', 'Lain-lain'];
+
+        return view('paket.index', [
+            'title' => 'Semua Paket',
+            'pakets' => Paket::latest()->filter(request(['search']))->paginate(10)->withQueryString(),
+            'outlets' => Outlet::all(),
+            'all_jenis' => $all_jenis
+        ]);
+    }
+
     public function test()
     {
         return Transaksi::find(8)->detailTransaksi->keterangan;

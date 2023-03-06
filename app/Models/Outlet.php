@@ -12,6 +12,16 @@ class Outlet extends Model
 
     protected $guarded = ['id'];
 
+    public function scopeFilter($query, array $filters)
+    {
+        $query->when($filters['search'] ?? false, function($query, $search){
+            return $query->where(function($query) use ($search){
+                $query->where('nama', 'like', '%'. $search. '%')
+                    ->orWhere('alamat', 'like', '%' . $search . '%');
+            });
+        });
+    }
+
     public function transaksi()
     {
         return $this->hasMany(Transaksi::class, 'transaksi_id');

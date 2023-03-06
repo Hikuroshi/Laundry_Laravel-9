@@ -13,6 +13,16 @@ class Paket extends Model
     protected $guarded = ['id'];
     protected $with = ['outlet'];
 
+    public function scopeFilter($query, array $filters)
+    {
+        $query->when($filters['search'] ?? false, function($query, $search){
+            return $query->where(function($query) use ($search){
+                $query->where('nama', 'like', '%'. $search . '%')
+                    ->orWhere('jenis', 'like', '%' . $search . '%');
+            });
+        });
+    }
+
     public function detailTransaksi()
     {
         return $this->hasOne(DetailTransaksi::class, 'detail_transaksi_id');
