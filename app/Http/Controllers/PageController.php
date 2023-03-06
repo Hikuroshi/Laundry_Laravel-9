@@ -17,12 +17,8 @@ class PageController extends Controller
         ]);
     }
 
-    public function dashboard(Transaksi $transaksi)
+    public function dashboard()
     {
-        // $harga = $transaksi->detailTransaksi->paket->harga * round($transaksi->detailTransaksi->qty);
-        // $diskon = $harga * $transaksi->diskon / 100;
-        // $total = $harga - $diskon + $transaksi->biaya_tambahan + $transaksi->pajak;
-
         return view('dashboard.index', [
             'title' => 'Dashboard',
             'transaksis_count' => Transaksi::all()->count(),
@@ -30,8 +26,8 @@ class PageController extends Controller
             'outlets_count' => Outlet::all()->count(),
             'pakets_count' => Paket::all()->count(),
             'users_count' => User::all()->count(),
-            'transaksis' => Transaksi::latest(3)->get(),
-            'total' => $transaksi->detailTransaksi
+            'transaksis' => Transaksi::take(5)->latest()->get(),
+            'members' => Member::take(3)->latest()->get()
         ]);
     }
 

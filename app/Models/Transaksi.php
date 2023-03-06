@@ -12,6 +12,13 @@ class Transaksi extends Model
     protected $guarded = ['id'];
     protected $with = ['user', 'member', 'outlet'];
 
+    public function getTotalAttribute()
+    {
+        $harga = $this->detailTransaksi->paket->harga * round($this->detailTransaksi->qty);
+        $diskon = $harga * $this->diskon / 100;
+        return $harga - $diskon + $this->biaya_tambahan + $this->pajak;
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class, 'user_id');
