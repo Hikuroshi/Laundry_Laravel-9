@@ -6,18 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Laundry | {{ $title }}</title>
     
-    <link rel="stylesheet" href="/assets/css/main/app.css" />
-    <link rel="stylesheet" href="/assets/css/main/app-dark.css" />
-    <link rel="stylesheet" href="/assets/css/pages/fontawesome.css" />
-    <link rel="stylesheet" href="/assets/extensions/datatables.net-bs5/css/dataTables.bootstrap5.min.css"/>
-    <link rel="stylesheet" href="/assets/css/pages/datatables.css" />
-    <link rel="stylesheet" href="/assets/css/shared/iconly.css" />
+    <link rel="stylesheet" href="/css/app.css" />
+    <link rel="stylesheet" href="/css/app-dark.css" />
+    <link rel="stylesheet" href="/css/dataTables.bootstrap5.min.css"/>
+    <link rel="stylesheet" href="/css/datatables.css" />
+    <link rel="stylesheet" href="/css/iconly.css" />
     
     <link rel="shortcut icon" href="/img/laundry.png" type="image/png"/>
 </head>
 
 <body>
-    <script src="/assets/js/initTheme.js"></script>
+    <script src="/js/initTheme.js"></script>
     <div id="app">
         <div id="sidebar" class="active">
             <div class="sidebar-wrapper active">
@@ -123,7 +122,7 @@
                                         </div>
                                         <div class="user-img d-flex align-items-center">
                                             <div class="avatar avatar-md">
-                                                <img src="/assets/images/faces/1.jpg" />
+                                                <img src="/img/profile.jpg" />
                                             </div>
                                         </div>
                                     </div>
@@ -148,6 +147,12 @@
                 </nav>
             </header>
             <div id="main-content">
+                <div class="col-md-4 m-auto">
+                    @if(session()->has('success'))
+                    <div class="alert alert-success text-center" id="notify">{{ session('success') }}</div>
+                    @endif
+                </div>
+                
                 @yield('container')
             </div>
             
@@ -161,22 +166,16 @@
         </div>
     </div>
     
-    <script src="/assets/js/bootstrap.js" async></script>
-    <script src="/assets/js/app.js" async></script>
-    <script src="/assets/js/scripts.js" async></script>
-    
-    <script src="/assets/extensions/jquery/jquery.min.js" async></script>
-    <script src="/assets/js/datatables.min.js" async></script>
-    <script src="/assets/js/pages/datatables.js" async></script>
+    <script src="/js/bootstrap.js"></script>
+    <script src="/js/app.js"></script>
+    <script src="/js/scripts.js"></script>
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/datatables.min.js"></script>
+    <script src="/js/datatables.js"></script>
     
     @if (request()->routeIs('transaksis.show'))
-    <script src="/assets/js/jspdf.debug.js" async></script>
-    <script src="/assets/js/html2canvas.min.js" async></script>
-    @endif
-    
-    @if (request()->routeIs('dashboard'))
-    <script src="assets/extensions/apexcharts/apexcharts.min.js"></script>
-    <script src="assets/js/pages/dashboard.js"></script>
+    <script src="/js/jspdf.debug.js"></script>
+    <script src="/js/html2canvas.min.js"></script>
     @endif
 </body>
 </html>

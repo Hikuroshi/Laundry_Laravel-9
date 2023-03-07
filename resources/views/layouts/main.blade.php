@@ -6,10 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Laundry | {{ $title }}</title>
     
-    <link rel="stylesheet" href="/assets/css/main/app.css" />
-    <link rel="stylesheet" href="/assets/css/main/app-dark.css" />
+    <link rel="stylesheet" href="/css/app.css" />
+    <link rel="stylesheet" href="/css/app-dark.css" />
     <link rel="shortcut icon" href="/img/laundry.png" type="image/png"/>
-    <link rel="stylesheet" href="/assets/css/shared/iconly.css" />
+    <link rel="stylesheet" href="/css/iconly.css" />
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -45,7 +45,7 @@
                                 @auth
                                 <a href="#" id="topbarUserDropdown" class="user-dropdown d-flex align-items-center dropend dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                                     <div class="avatar avatar-md2">
-                                        <img src="/assets/images/faces/1.jpg" alt="Avatar" />
+                                        <img src="/img/profile.jpg" alt="Avatar" />
                                     </div>
                                     <div class="text">
                                         <h6 class="user-dropdown-name">{{ auth()->user()->username }}</h6>
@@ -108,10 +108,10 @@
         </div>
     </div>
     
-    <script src="/assets/js/bootstrap.js"></script>
-    <script src="/assets/js/app.js"></script>
-    <script src="/assets/js/pages/horizontal-layout.js"></script>
-    <script src="/assets/extensions/apexcharts/apexcharts.min.js"></script>
-    <script src="/assets/js/pages/dashboard.js"></script>
+    <script src="/js/bootstrap.js"></script>
+    <script src="/js/app.js"></script>
+    <script src="/js/horizontal-layout.js"></script>
+    <script src="/js/scripts.js"></script>
+    <script src="/js/jquery.min.js"></script>
 </body>
 </html>
