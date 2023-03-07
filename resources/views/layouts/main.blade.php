@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="/assets/css/shared/iconly.css" />
 </head>
 
-<body>
+<body class="d-flex flex-column h-100">
     <div id="app">
         <div id="main" class="layout-horizontal">
             <header class="mb-5">
@@ -90,13 +90,13 @@
                 </nav>
             </header>
             
-            <div class="content-wrapper container">
+            <div class="content-wrapper container flex-shrink-0">
                 <div class="page-content">
                     @yield('container')
                 </div>
             </div>
             
-            <footer>
+            <footer class="footer mt-auto py-3">
                 <div class="container mt-5">
                     <div class="footer clearfix mb-0 text-muted">
                         <div class="text-center">

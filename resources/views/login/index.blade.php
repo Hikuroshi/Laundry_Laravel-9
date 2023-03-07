@@ -2,7 +2,7 @@
 
 @section('container')
 <div id="auth">
-    <div class="row h-100">
+    <div class="row">
         <div class="col-lg-5 col-12 m-auto">
             <h1 class="auth-title">Masuk.</h1>
             <p class="auth-subtitle mb-5">
@@ -32,12 +32,6 @@
                     Masuk
                 </button>
             </form>
-            <div class="text-center mt-3 text-lg fs-6">
-                <p class="text-gray-600">
-                    Belum punya akun?
-                    <a href="auth-register.html" class="font-bold">Daftar disini</a>.
-                </p>
-            </div>
         </div>
     </div>
 </div>

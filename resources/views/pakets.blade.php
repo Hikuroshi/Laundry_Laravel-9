@@ -27,7 +27,7 @@
 <div class="row row-cols-1 row-cols-lg-2 g-4">
     @foreach ($pakets as $paket)
     <div class="col">
-        <div class="card border border-dark">
+        <div class="card">
             <h3 class="card-header border-bottom border-secondary d-inline">{{ $paket->nama }}</h3>
             <div class="card-body pt-4">
                 <div class="row row-cols-1 row-cols-md-3 g-4">

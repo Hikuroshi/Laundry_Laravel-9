@@ -8,8 +8,8 @@
         <form action="/outlets">
             <div class="input-group">
                 <span class="input-group-text align-top pb-3" id="basic-addon2"><i class="bi bi-search"></i></span>
-                <input type="text" name="search" class="form-control" placeholder="Search book" aria-label="Search book" aria-describedby="button-addon2" value="{{ request('search') }}">
-                <button class="btn btn-primary" type="submit" id="button-addon2">Search</button>
+                <input type="text" name="search" class="form-control" placeholder="Cari outlet..." aria-label="Cari outlet..." aria-describedby="button-addon2" value="{{ request('search') }}">
+                <button class="btn btn-primary" type="submit" id="button-addon2">Cari</button>
             </div>
         </form>
     </div>
@@ -19,7 +19,7 @@
 <div class="row row-cols-1 row-cols-md-2 g-4">
     @foreach ($outlets as $outlet)
     <div class="col">
-        <div class="card border border-dark">
+        <div class="card">
             <h3 class="card-header border-bottom border-secondary d-inline">{{ $outlet->nama }}</h3>
             <div class="card-body pt-4">
                 <div class="row row-cols-1 row-cols-md-2 g-4">

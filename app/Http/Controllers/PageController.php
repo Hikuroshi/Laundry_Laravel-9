@@ -33,7 +33,7 @@ class PageController extends Controller
 
     public function outlet()
     {
-        return view('outlet.index', [
+        return view('outlets', [
             'title' => 'Semua Outlet',
             'outlets' => Outlet::latest()->filter(request(['search']))->paginate(10)->withQueryString(),
         ]);
@@ -43,10 +43,9 @@ class PageController extends Controller
     {
         $all_jenis = ['Kiloan', 'Selimut', 'Bed Cover', 'Kaos', 'Lain-lain'];
 
-        return view('paket.index', [
+        return view('pakets', [
             'title' => 'Semua Paket',
             'pakets' => Paket::latest()->filter(request(['search']))->paginate(10)->withQueryString(),
-            'outlets' => Outlet::all(),
             'all_jenis' => $all_jenis
         ]);
     }
