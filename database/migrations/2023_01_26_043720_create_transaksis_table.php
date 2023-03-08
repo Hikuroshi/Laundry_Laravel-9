@@ -18,9 +18,7 @@ return new class extends Migration
     {
         Schema::create('transaksis', function (Blueprint $table) {
             $table->increments('id');
-            $table->foreignIdFor(Outlet::class)->index();
             $table->string('kode_invoice', 100)->unique();
-            $table->foreignIdFor(Member::class)->index();
             $table->dateTime('tgl');
             $table->dateTime('batas_waktu');
             $table->dateTime('tgl_bayar')->nullable();
@@ -29,7 +27,6 @@ return new class extends Migration
             $table->integer('pajak');
             $table->enum('status', ['Baru', 'Proses', 'Selesai', 'Diambil'])->default('Baru');
             $table->enum('dibayar', ['Telah bayar', 'Belum bayar'])->default('Belum bayar');
-            $table->foreignIdFor(User::class)->index();
             $table->timestamps();
         });
     }

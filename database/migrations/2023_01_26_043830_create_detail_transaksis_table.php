@@ -16,8 +16,6 @@ return new class extends Migration
     {
         Schema::create('detail_transaksis', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('kode_invoice', 100)->references('kode_invoice')->on('transaksis')->index();
-            $table->foreignIdFor(Paket::class)->index();
             $table->double('qty');
             $table->text('keterangan');
             $table->timestamps();

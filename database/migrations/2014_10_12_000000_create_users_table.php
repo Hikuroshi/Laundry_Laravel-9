@@ -21,7 +21,6 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->text('password');
-            $table->foreignIdFor(Outlet::class)->index();
             $table->enum('roles', ['Admin', 'Kasir', 'Owner', 'Pengguna']);
             $table->rememberToken();
             $table->timestamps();
