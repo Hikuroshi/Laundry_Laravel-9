@@ -49,9 +49,4 @@ class PageController extends Controller
             'all_jenis' => $all_jenis
         ]);
     }
-
-    public function test()
-    {
-        return Transaksi::find(8)->detailTransaksi->keterangan;
-    }
 }

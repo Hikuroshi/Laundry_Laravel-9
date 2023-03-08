@@ -47,5 +47,3 @@ Route::resource('/dashboard/pakets', PaketController::class)->except('show')->mi
 Route::resource('/dashboard/users', UserController::class)->except('show')->middleware('isAdmin'); 
 Route::resource('/dashboard/members', MemberController::class)->except('show')->middleware('auth');
 Route::resource('/dashboard/transaksis', TransaksiController::class)->except('edit')->middleware('isKasir');
-
-Route::get('/test', [PageController::class, 'test']);
