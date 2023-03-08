@@ -19,9 +19,9 @@
                 @csrf
                 
                 <div class="form-group mb-4">
-                    <label for="member" class="form-label">Member <span class="text-danger">*</span></label>
+                    <label for="member" class="form-label">Pelanggan <span class="text-danger">*</span></label>
                     <select name="member_id" id="member" class="form-select @error('member_id') is-invalid @enderror">
-                        <option value="">Pilih Member</option>
+                        <option value="">Pilih Pelanggan</option>
                         @foreach ($members as $member)
                         <option value="{{ $member->id }}" @selected(old('member_id') == $member->id)>
                             {{ $member->nama }}

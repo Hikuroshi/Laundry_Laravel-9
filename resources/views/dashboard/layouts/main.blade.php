@@ -48,28 +48,28 @@
                         @can('Admin')
                         <li class="sidebar-item {{ request()->is('dashboard/outlets*') ? 'active' : '' }}">
                             <a href="/dashboard/outlets" class="sidebar-link">
-                                <i class="bi bi-grid-fill"></i>
+                                <i class="bi bi-houses-fill"></i>
                                 <span>Outlet</span>
                             </a>
                         </li>
                         
                         <li class="sidebar-item {{ request()->is('dashboard/pakets*') ? 'active' : '' }}">
                             <a href="/dashboard/pakets" class="sidebar-link">
-                                <i class="bi bi-grid-fill"></i>
+                                <i class="bi bi-stack"></i>
                                 <span>Paket / Produk</span>
                             </a>
                         </li>
                         
                         <li class="sidebar-item {{ request()->is('dashboard/users*') ? 'active' : '' }}">
                             <a href="/dashboard/users" class="sidebar-link">
-                                <i class="bi bi-grid-fill"></i>
+                                <i class="bi bi-person-fill-gear"></i>
                                 <span>Pengguna</span>
                             </a>
                         </li>
                         
                         <li class="sidebar-item {{ request()->is('dashboard/members*') ? request()->is('dashboard/members/create') ? '' : 'active' : '' }}">
                             <a href="/dashboard/members" class="sidebar-link">
-                                <i class="bi bi-grid-fill"></i>
+                                <i class="bi bi-people-fill"></i>
                                 <span>Pelanggan</span>
                             </a>
                         </li>
@@ -77,13 +77,13 @@
                         @can('Kasir')
                         <li class="sidebar-item {{ request()->is('dashboard/members/create') ? 'active' : '' }}">
                             <a href="/dashboard/members/create" class="sidebar-link">
-                                <i class="bi bi-grid-fill"></i>
+                                <i class="bi bi-person-fill-add"></i>
                                 <span>Registrasi Pelanggan</span>
                             </a>
                         </li>
                         <li class="sidebar-item {{ request()->is('dashboard/transaksis*') ? 'active' : '' }}">
                             <a href="/dashboard/transaksis" class="sidebar-link">
-                                <i class="bi bi-grid-fill"></i>
+                                <i class="bi bi-cart-fill"></i>
                                 <span>Transaksi</span>
                             </a>
                         </li>
@@ -128,18 +128,10 @@
                                     </div>
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton" style="min-width: 11rem">
-                                    <li>
-                                        <h6 class="dropdown-header">Halo, {{ auth()->user()->nama }}</h6>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="/"><i class="icon-mid bi bi-house me-2"></i> Home</a>
-                                    </li>
-                                    <li>
-                                        <hr class="dropdown-divider" />
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="/logout"><i class="icon-mid bi bi-box-arrow-left me-2"></i> Logout</a>
-                                    </li>
+                                    <li><h6 class="dropdown-header">Halo, {{ auth()->user()->nama }}</h6></li>
+                                    <li><a class="dropdown-item" href="/"><i class="icon-mid bi bi-house me-2"></i> Home</a></li>
+                                    <li><hr class="dropdown-divider" /></li>
+                                    <li><a class="dropdown-item" href="/logout"><i class="icon-mid bi bi-box-arrow-left me-2"></i> Logout</a></li>
                                 </ul>
                             </div>
                         </div>

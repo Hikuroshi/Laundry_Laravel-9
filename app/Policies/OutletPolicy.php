@@ -19,7 +19,7 @@ class OutletPolicy
      */
     public function viewAny(User $user)
     {
-        return $user->roles === 'Admin' ? Response::allow() : Response::deny('Kamu tidak memiliki izin');
+        return $user->roles === 'Admin' ? Response::allow() : Response::deny('Kamu tidak memiliki hak akses');
     }
 
     /**
@@ -31,7 +31,7 @@ class OutletPolicy
      */
     public function view(User $user, Outlet $outlet)
     {
-        return $user->roles === 'Admin' ? Response::allow() : Response::deny('Kamu tidak memiliki izin');
+        return $user->roles === 'Admin' ? Response::allow() : Response::deny('Kamu tidak memiliki hak akses');
     }
 
     /**
@@ -54,7 +54,7 @@ class OutletPolicy
      */
     public function update(User $user, Outlet $outlet)
     {
-        return $user->roles === 'Admin' ? Response::allow() : Response::deny('Kamu tidak memiliki izin');
+        return $user->roles === 'Admin' ? Response::allow() : Response::deny('Kamu tidak memiliki hak akses');
     }
 
     /**
@@ -66,7 +66,7 @@ class OutletPolicy
      */
     public function delete(User $user, Outlet $outlet)
     {
-        return $user->roles === 'Admin' ? Response::allow() : Response::deny('Kamu tidak memiliki izin');
+        return $user->roles === 'Admin' ? Response::allow() : Response::deny('Kamu tidak memiliki hak akses');
     }
 
     /**
@@ -78,7 +78,7 @@ class OutletPolicy
      */
     public function restore(User $user, Outlet $outlet)
     {
-        return $user->roles === 'Admin' ? Response::allow() : Response::deny('Kamu tidak memiliki izin');
+        return $user->roles === 'Admin' ? Response::allow() : Response::deny('Kamu tidak memiliki hak akses');
     }
 
     /**
@@ -90,6 +90,6 @@ class OutletPolicy
      */
     public function forceDelete(User $user, Outlet $outlet)
     {
-        return $user->roles === 'Admin' ? Response::allow() : Response::deny('Kamu tidak memiliki izin');
+        return $user->roles === 'Admin' ? Response::allow() : Response::deny('Kamu tidak memiliki hak akses');
     }
 }

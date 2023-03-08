@@ -101,8 +101,6 @@
                         @enderror
                     </div>
                     
-
-                    
                     <div class="form-group mb-3">
                         <label for="keterangan">Keterangan <span class="text-danger">*</span></label>
                         <textarea name="keterangan" class="form-control @error('keterangan') is-invalid @enderror" rows="3" placeholder="Masukan keterangan transaksi...">{{ old('keterangan', $transaksi->detailTransaksi->keterangan) }}</textarea>

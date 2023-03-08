@@ -38,7 +38,7 @@
     @endforeach
 </div>
 @else
-<h4 class="d-flex justify-content-center align-items-center fw-bold" style="margin: 30vh 0 30vh 0;">Books not found</h4>
+<h4 class="d-flex justify-content-center align-items-center fw-bold" style="margin: 30vh 0 30vh 0;">Outlet tidak ditemukan</h4>
 @endif
 <div class="d-flex justify-content-end">
     {{ $outlets->links() }}

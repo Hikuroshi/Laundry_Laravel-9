@@ -19,7 +19,7 @@ class PaketPolicy
      */
     public function viewAny(User $user)
     {
-        return $user->roles === 'Admin' ? Response::allow() : Response::deny('Kamu tidak memiliki izin');
+        return $user->roles === 'Admin' ? Response::allow() : Response::deny('Kamu tidak memiliki hak akses');
     }
 
     /**
@@ -31,7 +31,7 @@ class PaketPolicy
      */
     public function view(User $user, Paket $paket)
     {
-        return $user->roles === 'Admin' ? Response::allow() : Response::deny('Kamu tidak memiliki izin');
+        return $user->roles === 'Admin' ? Response::allow() : Response::deny('Kamu tidak memiliki hak akses');
     }
 
     /**
@@ -42,7 +42,7 @@ class PaketPolicy
      */
     public function create(User $user)
     {
-        return $user->roles === 'Admin' ? Response::allow() : Response::deny('Kamu tidak memiliki izin');
+        return $user->roles === 'Admin' ? Response::allow() : Response::deny('Kamu tidak memiliki hak akses');
     }
 
     /**
@@ -54,7 +54,7 @@ class PaketPolicy
      */
     public function update(User $user, Paket $paket)
     {
-        return $user->roles === 'Admin' ? Response::allow() : Response::deny('Kamu tidak memiliki izin');
+        return $user->roles === 'Admin' ? Response::allow() : Response::deny('Kamu tidak memiliki hak akses');
     }
 
     /**
@@ -66,7 +66,7 @@ class PaketPolicy
      */
     public function delete(User $user, Paket $paket)
     {
-        return $user->roles === 'Admin' ? Response::allow() : Response::deny('Kamu tidak memiliki izin');
+        return $user->roles === 'Admin' ? Response::allow() : Response::deny('Kamu tidak memiliki hak akses');
     }
 
     /**
@@ -78,7 +78,7 @@ class PaketPolicy
      */
     public function restore(User $user, Paket $paket)
     {
-        return $user->roles === 'Admin' ? Response::allow() : Response::deny('Kamu tidak memiliki izin');
+        return $user->roles === 'Admin' ? Response::allow() : Response::deny('Kamu tidak memiliki hak akses');
     }
 
     /**
@@ -90,6 +90,6 @@ class PaketPolicy
      */
     public function forceDelete(User $user, Paket $paket)
     {
-        return $user->roles === 'Admin' ? Response::allow() : Response::deny('Kamu tidak memiliki izin');
+        return $user->roles === 'Admin' ? Response::allow() : Response::deny('Kamu tidak memiliki hak akses');
     }
 }

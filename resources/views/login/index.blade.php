@@ -6,7 +6,7 @@
         <div class="col-lg-5 col-12 m-auto">
             <h1 class="auth-title">Masuk.</h1>
             <p class="auth-subtitle mb-4">
-                Masuk pake data yang kamu inputkan saat <a href="/register" class="text-decoration-none text-body">daftar</a> ya.
+                Masukin username atau email, password juga harus sesuai ya
             </p>
             
             @if(session()->has('loginError'))

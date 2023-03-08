@@ -20,7 +20,7 @@ class isAdmin
             if (auth()->user()->roles == 'Admin') {
                 return $next($request);
             }
-            abort(403);
+            abort(403, 'Kamu tidak memiliki hak akses');
         } else {
             return redirect('/login');
         }

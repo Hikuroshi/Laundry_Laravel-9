@@ -19,7 +19,7 @@ class TransaksiPolicy
      */
     public function viewAny(User $user)
     {
-        return $user->roles === 'Admin' || $user->roles === 'kasir' ? Response::allow() : Response::deny('Kamu tidak memiliki izin');
+        return $user->roles === 'Admin' || $user->roles === 'kasir' ? Response::allow() : Response::deny('Kamu tidak memiliki hak akses');
     }
 
     /**
@@ -31,7 +31,7 @@ class TransaksiPolicy
      */
     public function view(User $user, Transaksi $transaksi)
     {
-        return $user->roles === 'Admin' || $user->roles === 'kasir' ? Response::allow() : Response::deny('Kamu tidak memiliki izin');
+        return $user->roles === 'Admin' || $user->roles === 'kasir' ? Response::allow() : Response::deny('Kamu tidak memiliki hak akses');
     }
 
     /**
@@ -42,7 +42,7 @@ class TransaksiPolicy
      */
     public function create(User $user)
     {
-        return $user->roles === 'Admin' || $user->roles === 'kasir' ? Response::allow() : Response::deny('Kamu tidak memiliki izin');
+        return $user->roles === 'Admin' || $user->roles === 'kasir' ? Response::allow() : Response::deny('Kamu tidak memiliki hak akses');
     }
 
     /**
@@ -54,7 +54,7 @@ class TransaksiPolicy
      */
     public function update(User $user, Transaksi $transaksi)
     {
-        return $user->roles === 'Admin' || $user->roles === 'kasir' ? Response::allow() : Response::deny('Kamu tidak memiliki izin');
+        return $user->roles === 'Admin' || $user->roles === 'kasir' ? Response::allow() : Response::deny('Kamu tidak memiliki hak akses');
     }
 
     /**
@@ -66,7 +66,7 @@ class TransaksiPolicy
      */
     public function delete(User $user, Transaksi $transaksi)
     {
-        return $user->roles === 'Admin' ? Response::allow() : Response::deny('Kamu tidak memiliki izin');
+        return $user->roles === 'Admin' ? Response::allow() : Response::deny('Kamu tidak memiliki hak akses');
     }
 
     /**
@@ -78,7 +78,7 @@ class TransaksiPolicy
      */
     public function restore(User $user, Transaksi $transaksi)
     {
-        return $user->roles === 'Admin' ? Response::allow() : Response::deny('Kamu tidak memiliki izin');
+        return $user->roles === 'Admin' ? Response::allow() : Response::deny('Kamu tidak memiliki hak akses');
     }
 
     /**
@@ -90,6 +90,6 @@ class TransaksiPolicy
      */
     public function forceDelete(User $user, Transaksi $transaksi)
     {
-        return $user->roles === 'Admin' ? Response::allow() : Response::deny('Kamu tidak memiliki izin');
+        return $user->roles === 'Admin' ? Response::allow() : Response::deny('Kamu tidak memiliki hak akses');
     }
 }

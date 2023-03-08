@@ -64,7 +64,12 @@ class MemberController extends Controller
         $validatedData['slug'] = SlugService::createSlug(Member::class, 'slug', $request->nama);
 
         Member::create($validatedData);
-        return redirect('/dashboard/members')->with('success', 'Pelanggan berhasil ditambahkan!');
+
+        if(auth()->user()->roles == 'Kasir'){
+            return redirect('/dashboard/transaksis/create')->with('success', 'Pelanggan berhasil ditambahkan!');
+        } else {
+            return redirect('/dashboard/members')->with('success', 'Pelanggan berhasil ditambahkan!');
+        }
     }
 
     /**
@@ -138,7 +143,7 @@ class MemberController extends Controller
     public function destroy(Member $member)
     {
         $this->authorize('delete', $member);
-
+        
         Member::destroy($member->id);
         return redirect('/dashboard/members')->with('success', 'Pelanggan berhasil dihapus!');
     }

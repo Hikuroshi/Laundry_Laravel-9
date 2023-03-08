@@ -18,15 +18,6 @@
 </div>
 
 <section class="section">
-    <div class="col-md-6 m-auto">
-        @if(session()->has('success'))
-        <div class="alert alert-success alert-dismissible show fade text-center" id="notify-msg">
-            {{ session('success') }}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-        @endif
-    </div>
-
     <div class="card">
         <div class="card-body">
             <div class="table-responsive">

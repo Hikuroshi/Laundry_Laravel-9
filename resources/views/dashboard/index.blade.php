@@ -146,7 +146,7 @@
                 </div>
                 <div class="card-content p-3">
                     <div class="d-grid">
-                        <a href="/dashboard/transaksis/export" class="btn btn-primary"><i class="bi bi-cloud-download"></i> Unduh PDF</a>
+                        <a href="/dashboard/transaksis/export" class="btn btn-primary"><i class="bi bi-cloud-download"></i> Unduh XLSX</a>
                     </div>
                 </div>
             </div>

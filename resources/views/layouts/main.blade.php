@@ -54,9 +54,9 @@
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-end shadow-lg" aria-labelledby="topbarUserDropdown">
                                     <li><h6 class="dropdown-header">Halo, {{ auth()->user()->nama }}</h6></li>
-                                    <li><a class="dropdown-item" href="/dashboard">Dashboard</a></li>
+                                    <li><a class="dropdown-item" href="/dashboard"><i class="icon-mid bi bi-grid-fill me-2"></i> Dashboard</a></li>
                                     <li><hr class="dropdown-divider" /></li>
-                                    <li><a class="dropdown-item" href="/logout">Logout</a></li>
+                                    <li><a class="dropdown-item" href="/logout"><i class="icon-mid bi bi-box-arrow-left me-2"></i> Logout</a></li>
                                 </ul>
                                 @endauth
                             </div>
@@ -72,17 +72,17 @@
                         <ul>
                             <li class="menu-item">
                                 <a href="/" class="menu-link {{ request()->is('/') ? 'text-light' : '' }}">
-                                    <span><i class="bi bi-grid-fill"></i> Home</span>
+                                    <span><i class="icon-mid bi bi-house-fill"></i> Home</span>
                                 </a>
                             </li>
                             <li class="menu-item">
                                 <a href="/pakets" class="menu-link {{ request()->is('pakets') ? 'text-light' : '' }}">
-                                    <span><i class="bi bi-grid-fill"></i> Paket</span>
+                                    <span><i class="icon-mid bi bi-stack"></i> Paket</span>
                                 </a>
                             </li>
                             <li class="menu-item">
                                 <a href="/outlets" class="menu-link {{ request()->is('outlets') ? 'text-light' : '' }}">
-                                    <span><i class="bi bi-grid-fill"></i> Outlet</span>
+                                    <span><i class="icon-mid bi bi-houses-fill"></i> Outlet</span>
                                 </a>
                             </li>
                         </ul>
